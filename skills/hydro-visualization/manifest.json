@@ -1,0 +1,15 @@
+{
+  "id": "hydro-visualization",
+  "name": "Hydro Visualization",
+  "description": "Create publication-quality hydrological figures — hydrographs, FDCs, Budyko plots, calibration diagnostics with AI-Hydro branding",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "interpretation",
+  "category": "visualization",
+  "icon": "graph-line",
+  "tags": ["visualization", "matplotlib", "plotting", "publication", "figures"],
+  "tools_used": ["fetch_streamflow_data", "extract_hydrological_signatures", "extract_camels_attributes"],
+  "when_to_use": "When the user asks to plot, chart, visualize, or create figures for hydrological data",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/hydro-visualization",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/hydro-visualization/SKILL.md"
+}

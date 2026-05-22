@@ -1,0 +1,15 @@
+{
+  "id": "interactive-module-builder",
+  "name": "Interactive Module Builder",
+  "description": "Create AI-Hydro interactive learning modules — HTML files with executable cells, sliders, quizzes, and branded styling",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "general",
+  "category": "education",
+  "icon": "book",
+  "tags": ["learning-module", "interactive", "html-artifact", "education", "tutorial"],
+  "tools_used": [],
+  "when_to_use": "When the user wants to create a learning module, tutorial, interactive lesson, or educational content for hydrology",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/interactive-module-builder",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/interactive-module-builder/SKILL.md"
+}

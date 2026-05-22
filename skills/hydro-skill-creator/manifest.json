@@ -1,0 +1,15 @@
+{
+  "id": "hydro-skill-creator",
+  "name": "Hydro Skill Creator",
+  "description": "Create and improve AI-Hydro workflow skills — capture analyses as reusable SKILL.md files",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "general",
+  "category": "meta",
+  "icon": "tools",
+  "tags": ["skill-authoring", "workflow-capture", "meta", "agent-created"],
+  "tools_used": ["save_skill", "get_session_summary"],
+  "when_to_use": "When the user wants to create, capture, or improve a reusable AI-Hydro workflow skill",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/hydro-skill-creator",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/hydro-skill-creator/SKILL.md"
+}

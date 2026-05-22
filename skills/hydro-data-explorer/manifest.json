@@ -1,0 +1,15 @@
+{
+  "id": "hydro-data-explorer",
+  "name": "Hydro Data Explorer",
+  "description": "Build interactive HTML playgrounds for exploring hydrological data — parameter explorers, gauge dashboards, return-period calculators",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "interpretation",
+  "category": "visualization",
+  "icon": "compass",
+  "tags": ["playground", "interactive", "explorer", "dashboard", "data-visualization"],
+  "tools_used": ["fetch_streamflow_data", "extract_hydrological_signatures", "extract_camels_attributes"],
+  "when_to_use": "When the user asks for an interactive explorer, playground, dashboard, or visual tool for hydrological data",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/hydro-data-explorer",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/hydro-data-explorer/SKILL.md"
+}

@@ -26,8 +26,8 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-22T15:39:20.678755+00:00",
-    "updated_at": "2026-05-22T15:39:20.678755+00:00"
+    "created_at": "2026-05-22T20:50:14.136754+00:00",
+    "updated_at": "2026-05-22T20:50:14.136754+00:00"
   },
   {
     "id": "calibration-diagnostics",
@@ -57,8 +57,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-22T15:39:20.678823+00:00",
-    "updated_at": "2026-05-22T15:39:20.678823+00:00"
+    "created_at": "2026-05-22T20:50:14.137445+00:00",
+    "updated_at": "2026-05-22T20:50:14.137445+00:00"
   },
   {
     "id": "flood-frequency-analysis",
@@ -88,8 +88,152 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-22T15:39:20.678866+00:00",
-    "updated_at": "2026-05-22T15:39:20.678866+00:00"
+    "created_at": "2026-05-22T20:50:14.137740+00:00",
+    "updated_at": "2026-05-22T20:50:14.137740+00:00"
+  },
+  {
+    "id": "hydro-data-explorer",
+    "name": "Hydro Data Explorer",
+    "description": "Build interactive HTML playgrounds for exploring hydrological data \u2014 parameter explorers, gauge dashboards, return-period calculators",
+    "version": "0.1.0",
+    "author": "AI-Hydro Team",
+    "domain": "interpretation",
+    "category": "visualization",
+    "icon": "compass",
+    "tags": [
+      "playground",
+      "interactive",
+      "explorer",
+      "dashboard",
+      "data-visualization"
+    ],
+    "tools_used": [
+      "fetch_streamflow_data",
+      "extract_hydrological_signatures",
+      "extract_camels_attributes"
+    ],
+    "when_to_use": "When the user asks for an interactive explorer, playground, dashboard, or visual tool for hydrological data",
+    "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/hydro-data-explorer",
+    "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/hydro-data-explorer/SKILL.md",
+    "is_installed": false,
+    "is_recommended": true,
+    "github_stars": 0,
+    "download_count": 0,
+    "created_at": "2026-05-22T20:50:14.137982+00:00",
+    "updated_at": "2026-05-22T20:50:14.137982+00:00"
+  },
+  {
+    "id": "hydro-mcp-tool-builder",
+    "name": "MCP Tool Builder",
+    "description": "Build new @mcp.tool() functions that extend AI-Hydro's hydrological analysis capabilities",
+    "version": "0.1.0",
+    "author": "AI-Hydro Team",
+    "domain": "general",
+    "category": "development",
+    "icon": "wrench",
+    "tags": [
+      "mcp",
+      "tool-development",
+      "python",
+      "extensibility"
+    ],
+    "tools_used": [],
+    "when_to_use": "When the user wants to add a new MCP tool, wrap a hydrology library, or extend AI-Hydro's capabilities",
+    "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/hydro-mcp-tool-builder",
+    "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/hydro-mcp-tool-builder/SKILL.md",
+    "is_installed": false,
+    "is_recommended": false,
+    "github_stars": 0,
+    "download_count": 0,
+    "created_at": "2026-05-22T20:50:14.138153+00:00",
+    "updated_at": "2026-05-22T20:50:14.138153+00:00"
+  },
+  {
+    "id": "hydro-skill-creator",
+    "name": "Hydro Skill Creator",
+    "description": "Create and improve AI-Hydro workflow skills \u2014 capture analyses as reusable SKILL.md files",
+    "version": "0.1.0",
+    "author": "AI-Hydro Team",
+    "domain": "general",
+    "category": "meta",
+    "icon": "tools",
+    "tags": [
+      "skill-authoring",
+      "workflow-capture",
+      "meta",
+      "agent-created"
+    ],
+    "tools_used": [
+      "save_skill",
+      "get_session_summary"
+    ],
+    "when_to_use": "When the user wants to create, capture, or improve a reusable AI-Hydro workflow skill",
+    "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/hydro-skill-creator",
+    "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/hydro-skill-creator/SKILL.md",
+    "is_installed": false,
+    "is_recommended": false,
+    "github_stars": 0,
+    "download_count": 0,
+    "created_at": "2026-05-22T20:50:14.138287+00:00",
+    "updated_at": "2026-05-22T20:50:14.138287+00:00"
+  },
+  {
+    "id": "hydro-visualization",
+    "name": "Hydro Visualization",
+    "description": "Create publication-quality hydrological figures \u2014 hydrographs, FDCs, Budyko plots, calibration diagnostics with AI-Hydro branding",
+    "version": "0.1.0",
+    "author": "AI-Hydro Team",
+    "domain": "interpretation",
+    "category": "visualization",
+    "icon": "graph-line",
+    "tags": [
+      "visualization",
+      "matplotlib",
+      "plotting",
+      "publication",
+      "figures"
+    ],
+    "tools_used": [
+      "fetch_streamflow_data",
+      "extract_hydrological_signatures",
+      "extract_camels_attributes"
+    ],
+    "when_to_use": "When the user asks to plot, chart, visualize, or create figures for hydrological data",
+    "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/hydro-visualization",
+    "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/hydro-visualization/SKILL.md",
+    "is_installed": false,
+    "is_recommended": true,
+    "github_stars": 0,
+    "download_count": 0,
+    "created_at": "2026-05-22T20:50:14.138430+00:00",
+    "updated_at": "2026-05-22T20:50:14.138430+00:00"
+  },
+  {
+    "id": "interactive-module-builder",
+    "name": "Interactive Module Builder",
+    "description": "Create AI-Hydro interactive learning modules \u2014 HTML files with executable cells, sliders, quizzes, and branded styling",
+    "version": "0.1.0",
+    "author": "AI-Hydro Team",
+    "domain": "general",
+    "category": "education",
+    "icon": "book",
+    "tags": [
+      "learning-module",
+      "interactive",
+      "html-artifact",
+      "education",
+      "tutorial"
+    ],
+    "tools_used": [],
+    "when_to_use": "When the user wants to create a learning module, tutorial, interactive lesson, or educational content for hydrology",
+    "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/interactive-module-builder",
+    "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/interactive-module-builder/SKILL.md",
+    "is_installed": false,
+    "is_recommended": false,
+    "github_stars": 0,
+    "download_count": 0,
+    "created_at": "2026-05-22T20:50:14.138579+00:00",
+    "updated_at": "2026-05-22T20:50:14.138579+00:00"
   },
   {
     "id": "model-selection",
@@ -116,8 +260,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-22T15:39:20.678905+00:00",
-    "updated_at": "2026-05-22T15:39:20.678905+00:00"
+    "created_at": "2026-05-22T20:50:14.138773+00:00",
+    "updated_at": "2026-05-22T20:50:14.138773+00:00"
   },
   {
     "id": "signature-interpretation",
@@ -148,8 +292,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-22T15:39:20.678944+00:00",
-    "updated_at": "2026-05-22T15:39:20.678944+00:00"
+    "created_at": "2026-05-22T20:50:14.138960+00:00",
+    "updated_at": "2026-05-22T20:50:14.138960+00:00"
   },
   {
     "id": "watershed-analysis-workflow",
@@ -184,7 +328,7 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-22T15:39:20.678988+00:00",
-    "updated_at": "2026-05-22T15:39:20.678988+00:00"
+    "created_at": "2026-05-22T20:50:14.139153+00:00",
+    "updated_at": "2026-05-22T20:50:14.139153+00:00"
   }
 ]

@@ -10,6 +10,8 @@ AI-Hydro Skills follow the **Agent Skills open standard** (SKILL.md format), com
 
 ## Available Skills
 
+### Hydrology Workflows
+
 | Skill | Domain | Description |
 |---|---|---|
 | [Flood Frequency Analysis](skills/flood-frequency-analysis/) | frequency-analysis | Fit GEV/LP3 distributions, compute return-period quantiles |
@@ -18,6 +20,16 @@ AI-Hydro Skills follow the **Agent Skills open standard** (SKILL.md format), com
 | [Model Selection Guide](skills/model-selection/) | modelling | HBV vs LSTM decision framework |
 | [Calibration Diagnostics](skills/calibration-diagnostics/) | modelling | NSE/KGE/FDC diagnostics, residual analysis |
 | [Signature Interpretation](skills/signature-interpretation/) | interpretation | Interpret BFI, FDC slope, seasonality, runoff ratio |
+
+### Platform Tools (adapted from Anthropic patterns)
+
+| Skill | Domain | Description |
+|---|---|---|
+| [Hydro Visualization](skills/hydro-visualization/) | interpretation | Publication-quality figures — hydrographs, FDCs, Budyko plots, calibration diagnostics |
+| [Hydro Data Explorer](skills/hydro-data-explorer/) | interpretation | Interactive HTML playgrounds — parameter explorers, gauge dashboards, return-period calculators |
+| [Interactive Module Builder](skills/interactive-module-builder/) | general | Create learning modules — HTML files with executable cells, sliders, quizzes, scrollytelling |
+| [Hydro Skill Creator](skills/hydro-skill-creator/) | general | Author and improve reusable AI-Hydro workflow skills |
+| [MCP Tool Builder](skills/hydro-mcp-tool-builder/) | general | Build new @mcp.tool() functions to extend AI-Hydro's capabilities |
 
 ## Installing Skills
 
