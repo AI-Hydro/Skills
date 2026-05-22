@@ -1,0 +1,15 @@
+{
+  "id": "batch-gauge-analysis",
+  "name": "Batch Gauge Analysis",
+  "description": "Parallelize analysis across multiple USGS gauges using sub-agent delegation",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "composition",
+  "category": "orchestration",
+  "icon": "layers",
+  "tags": ["batch", "parallel", "multi-gauge", "delegation"],
+  "tools_used": ["start_session", "merge_session_shards"],
+  "when_to_use": "When the user wants to analyze multiple gauges at once or batch-process a list of sites",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/batch-gauge-analysis",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/batch-gauge-analysis/SKILL.md"
+}

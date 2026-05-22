@@ -1,0 +1,15 @@
+{
+  "id": "snow-hydrology-trends",
+  "name": "Snow Hydrology Trends",
+  "description": "Analyze snowpack dynamics — SWE trends, melt timing, rain-on-snow events from SNOTEL or gridMET",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "interpretation",
+  "category": "analysis",
+  "icon": "cloud",
+  "tags": ["snow", "SWE", "SNOTEL", "snowmelt", "rain-on-snow", "alpine"],
+  "tools_used": ["fetch_forcing_data"],
+  "when_to_use": "When the user asks about snowpack, SWE trends, melt timing, or rain-on-snow events",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/snow-hydrology-trends",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/snow-hydrology-trends/SKILL.md"
+}

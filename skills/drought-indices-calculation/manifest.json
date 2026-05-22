@@ -1,0 +1,15 @@
+{
+  "id": "drought-indices-calculation",
+  "name": "Drought Indices Calculation",
+  "description": "Compute SPI, SPEI drought indices from forcing data — identify drought onset, severity, and duration",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "frequency-analysis",
+  "category": "analysis",
+  "icon": "flame",
+  "tags": ["drought", "SPI", "SPEI", "water-deficit", "dry-spell"],
+  "tools_used": ["fetch_forcing_data"],
+  "when_to_use": "When the user asks about drought indices, SPI, SPEI, water deficit, or dry spell analysis",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/drought-indices-calculation",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/drought-indices-calculation/SKILL.md"
+}
