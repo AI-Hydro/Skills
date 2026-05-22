@@ -15,11 +15,15 @@ AI-Hydro Skills follow the **Agent Skills open standard** (SKILL.md format), com
 | Skill | Domain | Description |
 |---|---|---|
 | [Flood Frequency Analysis](skills/flood-frequency-analysis/) | frequency-analysis | Fit GEV/LP3 distributions, compute return-period quantiles |
+| [Drought Indices Calculation](skills/drought-indices-calculation/) | frequency-analysis | SPI, SPEI, PDSI drought indices from precipitation and temperature |
 | [Baseflow Separation](skills/baseflow-separation/) | baseflow | Lyne-Hollick & Eckhardt filters, BFI, recession analysis |
 | [Watershed Analysis Workflow](skills/watershed-analysis-workflow/) | composition | End-to-end catchment characterisation |
+| [Batch Gauge Analysis](skills/batch-gauge-analysis/) | composition | Multi-gauge batch processing with parallel sub-agents |
+| [Ungauged Basin Transcription](skills/ungauged-basin-transcription/) | composition | Regionalization and donor-gauge transfer for ungauged basins |
 | [Model Selection Guide](skills/model-selection/) | modelling | HBV vs LSTM decision framework |
 | [Calibration Diagnostics](skills/calibration-diagnostics/) | modelling | NSE/KGE/FDC diagnostics, residual analysis |
 | [Signature Interpretation](skills/signature-interpretation/) | interpretation | Interpret BFI, FDC slope, seasonality, runoff ratio |
+| [Snow Hydrology Trends](skills/snow-hydrology-trends/) | interpretation | Snowmelt timing, SWE trends, rain-on-snow analysis |
 
 ### Platform Tools (adapted from Anthropic patterns)
 
