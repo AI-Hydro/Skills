@@ -26,8 +26,8 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-22T00:00:00+00:00",
-    "updated_at": "2026-05-22T00:00:00+00:00"
+    "created_at": "2026-05-22T15:39:20.678755+00:00",
+    "updated_at": "2026-05-22T15:39:20.678755+00:00"
   },
   {
     "id": "calibration-diagnostics",
@@ -57,8 +57,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-22T00:00:00+00:00",
-    "updated_at": "2026-05-22T00:00:00+00:00"
+    "created_at": "2026-05-22T15:39:20.678823+00:00",
+    "updated_at": "2026-05-22T15:39:20.678823+00:00"
   },
   {
     "id": "flood-frequency-analysis",
@@ -88,8 +88,8 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-22T00:00:00+00:00",
-    "updated_at": "2026-05-22T00:00:00+00:00"
+    "created_at": "2026-05-22T15:39:20.678866+00:00",
+    "updated_at": "2026-05-22T15:39:20.678866+00:00"
   },
   {
     "id": "model-selection",
@@ -116,8 +116,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-22T00:00:00+00:00",
-    "updated_at": "2026-05-22T00:00:00+00:00"
+    "created_at": "2026-05-22T15:39:20.678905+00:00",
+    "updated_at": "2026-05-22T15:39:20.678905+00:00"
   },
   {
     "id": "signature-interpretation",
@@ -148,8 +148,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-22T00:00:00+00:00",
-    "updated_at": "2026-05-22T00:00:00+00:00"
+    "created_at": "2026-05-22T15:39:20.678944+00:00",
+    "updated_at": "2026-05-22T15:39:20.678944+00:00"
   },
   {
     "id": "watershed-analysis-workflow",
@@ -184,7 +184,7 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-22T00:00:00+00:00",
-    "updated_at": "2026-05-22T00:00:00+00:00"
+    "created_at": "2026-05-22T15:39:20.678988+00:00",
+    "updated_at": "2026-05-22T15:39:20.678988+00:00"
   }
 ]
