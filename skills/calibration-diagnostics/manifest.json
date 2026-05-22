@@ -1,0 +1,15 @@
+{
+  "id": "calibration-diagnostics",
+  "name": "Calibration Diagnostics",
+  "description": "Diagnose model calibration quality using NSE, KGE, FDC matching, seasonal residuals, and split-sample validation",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "modelling",
+  "category": "analysis",
+  "icon": "pulse",
+  "tags": ["calibration", "NSE", "KGE", "FDC", "diagnostics", "model-evaluation"],
+  "tools_used": ["get_model_results", "fetch_streamflow_data"],
+  "when_to_use": "When the user has run a model and wants to evaluate performance, asks if calibration is good, or wants to improve a poorly fitting simulation",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/calibration-diagnostics",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/calibration-diagnostics/SKILL.md"
+}

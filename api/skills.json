@@ -1,0 +1,190 @@
+[
+  {
+    "id": "baseflow-separation",
+    "name": "Baseflow Separation",
+    "description": "Separate baseflow from total streamflow using Lyne-Hollick and Eckhardt digital filters; compute BFI and recession constants",
+    "version": "0.1.0",
+    "author": "AI-Hydro Team",
+    "domain": "baseflow",
+    "category": "analysis",
+    "icon": "symbol-numeric",
+    "tags": [
+      "baseflow",
+      "BFI",
+      "recession",
+      "groundwater",
+      "digital-filter"
+    ],
+    "tools_used": [
+      "fetch_streamflow_data",
+      "extract_hydrological_signatures"
+    ],
+    "when_to_use": "When the user asks about baseflow, BFI, groundwater contribution, recession analysis, or slow-flow vs quick-flow partitioning",
+    "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/baseflow-separation",
+    "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/baseflow-separation/SKILL.md",
+    "is_installed": false,
+    "is_recommended": true,
+    "github_stars": 0,
+    "download_count": 0,
+    "created_at": "2026-05-22T00:00:00+00:00",
+    "updated_at": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "calibration-diagnostics",
+    "name": "Calibration Diagnostics",
+    "description": "Diagnose model calibration quality using NSE, KGE, FDC matching, seasonal residuals, and split-sample validation",
+    "version": "0.1.0",
+    "author": "AI-Hydro Team",
+    "domain": "modelling",
+    "category": "analysis",
+    "icon": "pulse",
+    "tags": [
+      "calibration",
+      "NSE",
+      "KGE",
+      "FDC",
+      "diagnostics",
+      "model-evaluation"
+    ],
+    "tools_used": [
+      "get_model_results",
+      "fetch_streamflow_data"
+    ],
+    "when_to_use": "When the user has run a model and wants to evaluate performance, asks if calibration is good, or wants to improve a poorly fitting simulation",
+    "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/calibration-diagnostics",
+    "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/calibration-diagnostics/SKILL.md",
+    "is_installed": false,
+    "is_recommended": false,
+    "github_stars": 0,
+    "download_count": 0,
+    "created_at": "2026-05-22T00:00:00+00:00",
+    "updated_at": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "flood-frequency-analysis",
+    "name": "Flood Frequency Analysis",
+    "description": "Fit flood frequency distributions (GEV, LP3) and compute return-period quantiles from annual maximum series",
+    "version": "0.1.0",
+    "author": "AI-Hydro Team",
+    "domain": "frequency-analysis",
+    "category": "analysis",
+    "icon": "graph-line",
+    "tags": [
+      "flood",
+      "frequency",
+      "return-period",
+      "GEV",
+      "LP3",
+      "AEP"
+    ],
+    "tools_used": [
+      "fetch_streamflow_data",
+      "extract_hydrological_signatures"
+    ],
+    "when_to_use": "When the user asks about return periods, T-year floods, flood frequency, or designing for a specific AEP",
+    "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/flood-frequency-analysis",
+    "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/flood-frequency-analysis/SKILL.md",
+    "is_installed": false,
+    "is_recommended": true,
+    "github_stars": 0,
+    "download_count": 0,
+    "created_at": "2026-05-22T00:00:00+00:00",
+    "updated_at": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "model-selection",
+    "name": "Model Selection Guide",
+    "description": "Decision framework for choosing between conceptual (HBV) and neural (LSTM) hydrological models based on data, purpose, and catchment type",
+    "version": "0.1.0",
+    "author": "AI-Hydro Team",
+    "domain": "modelling",
+    "category": "decision",
+    "icon": "symbol-boolean",
+    "tags": [
+      "model-selection",
+      "HBV",
+      "LSTM",
+      "conceptual",
+      "neural-hydrology",
+      "decision"
+    ],
+    "tools_used": [],
+    "when_to_use": "When the user asks which model to use, wants to choose between HBV and LSTM, or is unsure how to start rainfall-runoff modelling",
+    "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/model-selection",
+    "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/model-selection/SKILL.md",
+    "is_installed": false,
+    "is_recommended": false,
+    "github_stars": 0,
+    "download_count": 0,
+    "created_at": "2026-05-22T00:00:00+00:00",
+    "updated_at": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "signature-interpretation",
+    "name": "Signature Interpretation",
+    "description": "Interpret hydrological signatures (BFI, FDC slope, seasonality, runoff ratio) and build a coherent narrative of catchment behaviour",
+    "version": "0.1.0",
+    "author": "AI-Hydro Team",
+    "domain": "interpretation",
+    "category": "analysis",
+    "icon": "book",
+    "tags": [
+      "signatures",
+      "interpretation",
+      "FDC",
+      "BFI",
+      "seasonality",
+      "catchment-behaviour"
+    ],
+    "tools_used": [
+      "extract_hydrological_signatures",
+      "extract_camels_attributes",
+      "get_session_summary"
+    ],
+    "when_to_use": "When the user has extracted signatures and wants to understand what they mean, or wants to compare a catchment to regional norms",
+    "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/signature-interpretation",
+    "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/signature-interpretation/SKILL.md",
+    "is_installed": false,
+    "is_recommended": false,
+    "github_stars": 0,
+    "download_count": 0,
+    "created_at": "2026-05-22T00:00:00+00:00",
+    "updated_at": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "watershed-analysis-workflow",
+    "name": "Watershed Analysis Workflow",
+    "description": "End-to-end catchment characterisation: delineation, terrain, climate, streamflow signatures, and CAMELS attributes",
+    "version": "0.1.0",
+    "author": "AI-Hydro Team",
+    "domain": "composition",
+    "category": "workflow",
+    "icon": "map",
+    "tags": [
+      "watershed",
+      "catchment",
+      "delineation",
+      "TWI",
+      "signatures",
+      "CAMELS"
+    ],
+    "tools_used": [
+      "delineate_watershed",
+      "compute_twi",
+      "fetch_streamflow_data",
+      "extract_hydrological_signatures",
+      "extract_geomorphic_parameters",
+      "fetch_forcing_data",
+      "extract_camels_attributes"
+    ],
+    "when_to_use": "When the user wants a complete watershed analysis, catchment characterisation, or asks to analyse a gauge or watershed from scratch",
+    "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/watershed-analysis-workflow",
+    "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/watershed-analysis-workflow/SKILL.md",
+    "is_installed": false,
+    "is_recommended": true,
+    "github_stars": 0,
+    "download_count": 0,
+    "created_at": "2026-05-22T00:00:00+00:00",
+    "updated_at": "2026-05-22T00:00:00+00:00"
+  }
+]

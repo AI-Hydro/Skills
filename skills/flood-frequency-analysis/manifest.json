@@ -1,0 +1,15 @@
+{
+  "id": "flood-frequency-analysis",
+  "name": "Flood Frequency Analysis",
+  "description": "Fit flood frequency distributions (GEV, LP3) and compute return-period quantiles from annual maximum series",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "frequency-analysis",
+  "category": "analysis",
+  "icon": "graph-line",
+  "tags": ["flood", "frequency", "return-period", "GEV", "LP3", "AEP"],
+  "tools_used": ["fetch_streamflow_data", "extract_hydrological_signatures"],
+  "when_to_use": "When the user asks about return periods, T-year floods, flood frequency, or designing for a specific AEP",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/flood-frequency-analysis",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/flood-frequency-analysis/SKILL.md"
+}

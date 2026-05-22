@@ -1,0 +1,15 @@
+{
+  "id": "baseflow-separation",
+  "name": "Baseflow Separation",
+  "description": "Separate baseflow from total streamflow using Lyne-Hollick and Eckhardt digital filters; compute BFI and recession constants",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "baseflow",
+  "category": "analysis",
+  "icon": "symbol-numeric",
+  "tags": ["baseflow", "BFI", "recession", "groundwater", "digital-filter"],
+  "tools_used": ["fetch_streamflow_data", "extract_hydrological_signatures"],
+  "when_to_use": "When the user asks about baseflow, BFI, groundwater contribution, recession analysis, or slow-flow vs quick-flow partitioning",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/baseflow-separation",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/baseflow-separation/SKILL.md"
+}

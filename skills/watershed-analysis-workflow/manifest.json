@@ -1,0 +1,15 @@
+{
+  "id": "watershed-analysis-workflow",
+  "name": "Watershed Analysis Workflow",
+  "description": "End-to-end catchment characterisation: delineation, terrain, climate, streamflow signatures, and CAMELS attributes",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "composition",
+  "category": "workflow",
+  "icon": "map",
+  "tags": ["watershed", "catchment", "delineation", "TWI", "signatures", "CAMELS"],
+  "tools_used": ["delineate_watershed", "compute_twi", "fetch_streamflow_data", "extract_hydrological_signatures", "extract_geomorphic_parameters", "fetch_forcing_data", "extract_camels_attributes"],
+  "when_to_use": "When the user wants a complete watershed analysis, catchment characterisation, or asks to analyse a gauge or watershed from scratch",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/watershed-analysis-workflow",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/watershed-analysis-workflow/SKILL.md"
+}

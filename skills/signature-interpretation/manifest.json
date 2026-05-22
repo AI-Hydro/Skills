@@ -1,0 +1,15 @@
+{
+  "id": "signature-interpretation",
+  "name": "Signature Interpretation",
+  "description": "Interpret hydrological signatures (BFI, FDC slope, seasonality, runoff ratio) and build a coherent narrative of catchment behaviour",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "interpretation",
+  "category": "analysis",
+  "icon": "book",
+  "tags": ["signatures", "interpretation", "FDC", "BFI", "seasonality", "catchment-behaviour"],
+  "tools_used": ["extract_hydrological_signatures", "extract_camels_attributes", "get_session_summary"],
+  "when_to_use": "When the user has extracted signatures and wants to understand what they mean, or wants to compare a catchment to regional norms",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/signature-interpretation",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/signature-interpretation/SKILL.md"
+}

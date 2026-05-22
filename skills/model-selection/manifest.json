@@ -1,0 +1,15 @@
+{
+  "id": "model-selection",
+  "name": "Model Selection Guide",
+  "description": "Decision framework for choosing between conceptual (HBV) and neural (LSTM) hydrological models based on data, purpose, and catchment type",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "modelling",
+  "category": "decision",
+  "icon": "symbol-boolean",
+  "tags": ["model-selection", "HBV", "LSTM", "conceptual", "neural-hydrology", "decision"],
+  "tools_used": [],
+  "when_to_use": "When the user asks which model to use, wants to choose between HBV and LSTM, or is unsure how to start rainfall-runoff modelling",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/model-selection",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/model-selection/SKILL.md"
+}

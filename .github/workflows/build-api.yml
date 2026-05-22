@@ -1,0 +1,106 @@
+name: Build Skills API
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Build skills.json from manifests
+        run: |
+          python3 - <<'EOF'
+          import json
+          import os
+          import glob
+          from datetime import datetime, timezone
+
+          skills = []
+          skill_dirs = sorted(glob.glob("skills/*/manifest.json"))
+
+          for manifest_path in skill_dirs:
+              with open(manifest_path) as f:
+                  manifest = json.load(f)
+
+              skill_dir = os.path.dirname(manifest_path)
+              skill_md_path = os.path.join(skill_dir, "SKILL.md")
+
+              # Compute file dates
+              created_at = datetime.now(timezone.utc).isoformat()
+              updated_at = created_at
+
+              entry = {
+                  **manifest,
+                  "is_installed": False,
+                  "is_recommended": manifest.get("id") in [
+                      "flood-frequency-analysis",
+                      "watershed-analysis-workflow",
+                      "baseflow-separation"
+                  ],
+                  "github_stars": 0,
+                  "download_count": 0,
+                  "created_at": created_at,
+                  "updated_at": updated_at,
+              }
+              skills.append(entry)
+              print(f"  + {entry['id']}")
+
+          os.makedirs("api", exist_ok=True)
+          with open("api/skills.json", "w") as f:
+              json.dump(skills, f, indent=2)
+
+          print(f"\nWrote api/skills.json with {len(skills)} skills")
+          EOF
+
+      - name: Commit api/skills.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add api/skills.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: regenerate api/skills.json [skip ci]"
+            git push
+          fi
+
+  deploy-pages:
+    needs: build-api
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
