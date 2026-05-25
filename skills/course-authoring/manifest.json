@@ -1,0 +1,15 @@
+{
+  "id": "course-authoring",
+  "name": "Course Authoring",
+  "description": "End-to-end workflow for authoring a multi-module AI-Hydro course: interview the user for audience and goals, propose a module breakdown with an explicit prerequisite graph, scaffold the files via the course_scaffold tool, then author each module's body.",
+  "version": "0.1.0",
+  "author": "AI-Hydro Team",
+  "domain": "teaching",
+  "category": "authoring",
+  "icon": "book",
+  "tags": ["course", "curriculum", "teaching", "modules", "learning-path", "scaffold", "education"],
+  "tools_used": ["course_scaffold", "course_get_curriculum", "course_get_state", "course_navigate"],
+  "when_to_use": "When the user asks to build a course, design a curriculum, author teaching modules, create a learning path, or scaffold educational content for students.",
+  "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/course-authoring",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/course-authoring/SKILL.md"
+}
