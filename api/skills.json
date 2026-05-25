@@ -26,8 +26,8 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774570+00:00",
-    "updated_at": "2026-05-23T12:14:35.774570+00:00"
+    "created_at": "2026-05-25T08:38:09.644201+00:00",
+    "updated_at": "2026-05-25T08:38:09.644201+00:00"
   },
   {
     "id": "batch-gauge-analysis",
@@ -55,8 +55,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774628+00:00",
-    "updated_at": "2026-05-23T12:14:35.774628+00:00"
+    "created_at": "2026-05-25T08:38:09.644269+00:00",
+    "updated_at": "2026-05-25T08:38:09.644269+00:00"
   },
   {
     "id": "calibration-diagnostics",
@@ -86,8 +86,42 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774657+00:00",
-    "updated_at": "2026-05-23T12:14:35.774657+00:00"
+    "created_at": "2026-05-25T08:38:09.644312+00:00",
+    "updated_at": "2026-05-25T08:38:09.644312+00:00"
+  },
+  {
+    "id": "course-authoring",
+    "name": "Course Authoring",
+    "description": "End-to-end workflow for authoring a multi-module AI-Hydro course: interview the user for audience and goals, propose a module breakdown with an explicit prerequisite graph, scaffold the files via the course_scaffold tool, then author each module's body.",
+    "version": "0.1.0",
+    "author": "AI-Hydro Team",
+    "domain": "teaching",
+    "category": "authoring",
+    "icon": "book",
+    "tags": [
+      "course",
+      "curriculum",
+      "teaching",
+      "modules",
+      "learning-path",
+      "scaffold",
+      "education"
+    ],
+    "tools_used": [
+      "course_scaffold",
+      "course_get_curriculum",
+      "course_get_state",
+      "course_navigate"
+    ],
+    "when_to_use": "When the user asks to build a course, design a curriculum, author teaching modules, create a learning path, or scaffold educational content for students.",
+    "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/course-authoring",
+    "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/course-authoring/SKILL.md",
+    "is_installed": false,
+    "is_recommended": false,
+    "github_stars": 0,
+    "download_count": 0,
+    "created_at": "2026-05-25T08:38:09.644351+00:00",
+    "updated_at": "2026-05-25T08:38:09.644351+00:00"
   },
   {
     "id": "drought-indices-calculation",
@@ -115,8 +149,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774689+00:00",
-    "updated_at": "2026-05-23T12:14:35.774689+00:00"
+    "created_at": "2026-05-25T08:38:09.644395+00:00",
+    "updated_at": "2026-05-25T08:38:09.644395+00:00"
   },
   {
     "id": "flood-frequency-analysis",
@@ -146,8 +180,8 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774715+00:00",
-    "updated_at": "2026-05-23T12:14:35.774715+00:00"
+    "created_at": "2026-05-25T08:38:09.644440+00:00",
+    "updated_at": "2026-05-25T08:38:09.644440+00:00"
   },
   {
     "id": "hydro-data-explorer",
@@ -177,8 +211,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774747+00:00",
-    "updated_at": "2026-05-23T12:14:35.774747+00:00"
+    "created_at": "2026-05-25T08:38:09.644484+00:00",
+    "updated_at": "2026-05-25T08:38:09.644484+00:00"
   },
   {
     "id": "hydro-mcp-tool-builder",
@@ -203,8 +237,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774777+00:00",
-    "updated_at": "2026-05-23T12:14:35.774777+00:00"
+    "created_at": "2026-05-25T08:38:09.644531+00:00",
+    "updated_at": "2026-05-25T08:38:09.644531+00:00"
   },
   {
     "id": "hydro-skill-creator",
@@ -232,8 +266,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774813+00:00",
-    "updated_at": "2026-05-23T12:14:35.774813+00:00"
+    "created_at": "2026-05-25T08:38:09.644577+00:00",
+    "updated_at": "2026-05-25T08:38:09.644577+00:00"
   },
   {
     "id": "hydro-visualization",
@@ -263,8 +297,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774855+00:00",
-    "updated_at": "2026-05-23T12:14:35.774855+00:00"
+    "created_at": "2026-05-25T08:38:09.644622+00:00",
+    "updated_at": "2026-05-25T08:38:09.644622+00:00"
   },
   {
     "id": "interactive-module-builder",
@@ -294,8 +328,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774887+00:00",
-    "updated_at": "2026-05-23T12:14:35.774887+00:00"
+    "created_at": "2026-05-25T08:38:09.644664+00:00",
+    "updated_at": "2026-05-25T08:38:09.644664+00:00"
   },
   {
     "id": "model-selection",
@@ -322,8 +356,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774914+00:00",
-    "updated_at": "2026-05-23T12:14:35.774914+00:00"
+    "created_at": "2026-05-25T08:38:09.644704+00:00",
+    "updated_at": "2026-05-25T08:38:09.644704+00:00"
   },
   {
     "id": "signature-interpretation",
@@ -354,8 +388,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774939+00:00",
-    "updated_at": "2026-05-23T12:14:35.774939+00:00"
+    "created_at": "2026-05-25T08:38:09.644739+00:00",
+    "updated_at": "2026-05-25T08:38:09.644739+00:00"
   },
   {
     "id": "snow-hydrology-trends",
@@ -384,8 +418,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774964+00:00",
-    "updated_at": "2026-05-23T12:14:35.774964+00:00"
+    "created_at": "2026-05-25T08:38:09.644779+00:00",
+    "updated_at": "2026-05-25T08:38:09.644779+00:00"
   },
   {
     "id": "ungauged-basin-transcription",
@@ -415,8 +449,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.774988+00:00",
-    "updated_at": "2026-05-23T12:14:35.774988+00:00"
+    "created_at": "2026-05-25T08:38:09.644815+00:00",
+    "updated_at": "2026-05-25T08:38:09.644815+00:00"
   },
   {
     "id": "watershed-analysis-workflow",
@@ -451,7 +485,7 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-23T12:14:35.775010+00:00",
-    "updated_at": "2026-05-23T12:14:35.775010+00:00"
+    "created_at": "2026-05-25T08:38:09.644851+00:00",
+    "updated_at": "2026-05-25T08:38:09.644851+00:00"
   }
 ]
