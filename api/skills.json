@@ -26,8 +26,8 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776022+00:00",
-    "updated_at": "2026-05-30T13:06:21.776022+00:00"
+    "created_at": "2026-05-30T21:21:48.602298+00:00",
+    "updated_at": "2026-05-30T21:21:48.602298+00:00"
   },
   {
     "id": "batch-gauge-analysis",
@@ -55,8 +55,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776087+00:00",
-    "updated_at": "2026-05-30T13:06:21.776087+00:00"
+    "created_at": "2026-05-30T21:21:48.602368+00:00",
+    "updated_at": "2026-05-30T21:21:48.602368+00:00"
   },
   {
     "id": "calibration-diagnostics",
@@ -86,8 +86,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776117+00:00",
-    "updated_at": "2026-05-30T13:06:21.776117+00:00"
+    "created_at": "2026-05-30T21:21:48.602413+00:00",
+    "updated_at": "2026-05-30T21:21:48.602413+00:00"
   },
   {
     "id": "course-authoring",
@@ -120,8 +120,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776144+00:00",
-    "updated_at": "2026-05-30T13:06:21.776144+00:00"
+    "created_at": "2026-05-30T21:21:48.602458+00:00",
+    "updated_at": "2026-05-30T21:21:48.602458+00:00"
   },
   {
     "id": "drought-indices-calculation",
@@ -149,8 +149,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776202+00:00",
-    "updated_at": "2026-05-30T13:06:21.776202+00:00"
+    "created_at": "2026-05-30T21:21:48.602503+00:00",
+    "updated_at": "2026-05-30T21:21:48.602503+00:00"
   },
   {
     "id": "flood-frequency-analysis",
@@ -180,8 +180,8 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776237+00:00",
-    "updated_at": "2026-05-30T13:06:21.776237+00:00"
+    "created_at": "2026-05-30T21:21:48.602544+00:00",
+    "updated_at": "2026-05-30T21:21:48.602544+00:00"
   },
   {
     "id": "hydro-data-explorer",
@@ -211,8 +211,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776269+00:00",
-    "updated_at": "2026-05-30T13:06:21.776269+00:00"
+    "created_at": "2026-05-30T21:21:48.602591+00:00",
+    "updated_at": "2026-05-30T21:21:48.602591+00:00"
   },
   {
     "id": "hydro-mcp-tool-builder",
@@ -243,8 +243,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776306+00:00",
-    "updated_at": "2026-05-30T13:06:21.776306+00:00"
+    "created_at": "2026-05-30T21:21:48.602644+00:00",
+    "updated_at": "2026-05-30T21:21:48.602644+00:00"
   },
   {
     "id": "hydro-skill-creator",
@@ -272,8 +272,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776337+00:00",
-    "updated_at": "2026-05-30T13:06:21.776337+00:00"
+    "created_at": "2026-05-30T21:21:48.602689+00:00",
+    "updated_at": "2026-05-30T21:21:48.602689+00:00"
   },
   {
     "id": "hydro-visualization",
@@ -303,14 +303,14 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776364+00:00",
-    "updated_at": "2026-05-30T13:06:21.776364+00:00"
+    "created_at": "2026-05-30T21:21:48.602733+00:00",
+    "updated_at": "2026-05-30T21:21:48.602733+00:00"
   },
   {
     "id": "interactive-module-builder",
     "name": "Interactive Module Builder",
-    "description": "Create production-grade AI-Hydro interactive learning modules \u2014 HTML files with executable Python cells, real AI-Hydro branding (animated logo, dark theme), peer-reviewed citations, full provenance, CC-BY-4.0 license. Auto-opens in AI-Hydro HTML Preview panel.",
-    "version": "0.2.0",
+    "description": "Create production-grade AI-Hydro interactive learning modules \u2014 HTML files with executable Python cells, interactivity primitives (timeline, compare, sim, plot, 3D scene3d), Manim video cells, real AI-Hydro branding (animated logo, dark theme), peer-reviewed citations, full provenance, CC-BY-4.0 license. Auto-opens in AI-Hydro HTML Preview panel.",
+    "version": "0.3.0",
     "author": "AI-Hydro Team",
     "domain": "general",
     "category": "education",
@@ -334,8 +334,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776393+00:00",
-    "updated_at": "2026-05-30T13:06:21.776393+00:00"
+    "created_at": "2026-05-30T21:21:48.602778+00:00",
+    "updated_at": "2026-05-30T21:21:48.602778+00:00"
   },
   {
     "id": "model-selection",
@@ -362,8 +362,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776417+00:00",
-    "updated_at": "2026-05-30T13:06:21.776417+00:00"
+    "created_at": "2026-05-30T21:21:48.602819+00:00",
+    "updated_at": "2026-05-30T21:21:48.602819+00:00"
   },
   {
     "id": "signature-interpretation",
@@ -394,8 +394,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776441+00:00",
-    "updated_at": "2026-05-30T13:06:21.776441+00:00"
+    "created_at": "2026-05-30T21:21:48.602854+00:00",
+    "updated_at": "2026-05-30T21:21:48.602854+00:00"
   },
   {
     "id": "snow-hydrology-trends",
@@ -424,8 +424,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776465+00:00",
-    "updated_at": "2026-05-30T13:06:21.776465+00:00"
+    "created_at": "2026-05-30T21:21:48.602895+00:00",
+    "updated_at": "2026-05-30T21:21:48.602895+00:00"
   },
   {
     "id": "ungauged-basin-transcription",
@@ -455,8 +455,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776488+00:00",
-    "updated_at": "2026-05-30T13:06:21.776488+00:00"
+    "created_at": "2026-05-30T21:21:48.602976+00:00",
+    "updated_at": "2026-05-30T21:21:48.602976+00:00"
   },
   {
     "id": "watershed-analysis-workflow",
@@ -491,7 +491,7 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T13:06:21.776511+00:00",
-    "updated_at": "2026-05-30T13:06:21.776511+00:00"
+    "created_at": "2026-05-30T21:21:48.603020+00:00",
+    "updated_at": "2026-05-30T21:21:48.603020+00:00"
   }
 ]
