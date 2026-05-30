@@ -1,15 +1,15 @@
 {
   "id": "hydro-mcp-tool-builder",
   "name": "MCP Tool Builder",
-  "description": "Build new @mcp.tool() functions that extend AI-Hydro's hydrological analysis capabilities",
-  "version": "0.1.0",
+  "description": "Build new @mcp.tool() functions that extend AI-Hydro — born compliant with tiers, hot/summary injection, argument-repair, self-correcting errors, and session resolution",
+  "version": "0.2.0",
   "author": "AI-Hydro Team",
-  "domain": "general",
+  "domain": "development",
   "category": "development",
   "icon": "wrench",
-  "tags": ["mcp", "tool-development", "python", "extensibility"],
-  "tools_used": [],
-  "when_to_use": "When the user wants to add a new MCP tool, wrap a hydrology library, or extend AI-Hydro's capabilities",
+  "tags": ["mcp", "tool-development", "python", "extensibility", "tiers", "authoring"],
+  "tools_used": ["list_available_tools", "describe_tool", "aihydro_describe_capability"],
+  "when_to_use": "When the user wants to add a new MCP tool, wrap a hydrology library, expose a new data source, or extend AI-Hydro's capabilities",
   "github_url": "https://github.com/AI-Hydro/Skills/tree/main/skills/hydro-mcp-tool-builder",
   "skill_url": "https://raw.githubusercontent.com/AI-Hydro/Skills/main/skills/hydro-mcp-tool-builder/SKILL.md"
 }
