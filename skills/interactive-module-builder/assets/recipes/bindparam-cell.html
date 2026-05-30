@@ -1,0 +1,42 @@
+<!-- RECIPE: bindParam + Python cell.
+     A slider re-substitutes {{alpha}} in the cell source and auto-runs the cell.
+     Pedagogy: "change a parameter, see the real computation respond." -->
+
+<label style="color:#7dd3fc">
+  Filter parameter α
+  <input id="alpha" type="range" min="0.90" max="0.99" step="0.005" value="0.925">
+  <span data-aihydro-mirror="alpha" style="color:#00DDFF">0.925</span>
+</label>
+
+<div class="aihydro-cell" data-aihydro-cell-id="bfi-cell" data-language="python">
+  <div class="aihydro-cell-header">
+    <span class="aihydro-cell-lang">python</span>
+    <span class="aihydro-cell-desc">Baseflow index from a Lyne–Hollick filter</span>
+    <button class="aihydro-run" type="button">Run ▶</button>
+  </div>
+  <pre class="aihydro-source">import numpy as np
+import matplotlib as mpl, matplotlib.pyplot as plt
+mpl.rcParams.update({'figure.facecolor':'#0a0a15','axes.facecolor':'#0f0f1e',
+    'text.color':'#e2e8f0','axes.labelcolor':'#7dd3fc','xtick.color':'#94a3b8','ytick.color':'#94a3b8'})
+
+alpha = {{alpha}}                      # ← substituted live by bindParam
+t = np.arange(365)
+Q = 5 + 20*np.exp(-((t-90)**2)/200) + np.random.default_rng(0).lognormal(0.5, 0.4, 365)
+bf = np.zeros_like(Q); bf[0] = Q[0]
+for i in range(1, len(Q)):
+    bf[i] = min(alpha*bf[i-1] + 0.5*(1-alpha)*(Q[i]+Q[i-1]), Q[i])
+bfi = bf.sum()/Q.sum()
+
+fig, ax = plt.subplots(figsize=(11, 4))
+ax.plot(t, Q, color='#00A3FF', lw=0.9, label='Streamflow')
+ax.plot(t, bf, color='#00DDFF', lw=0.9, ls='--', label=f'Baseflow (BFI={bfi:.3f})')
+ax.set_xlabel('Day of year'); ax.set_ylabel('Q (m³/s)'); ax.legend(); plt.tight_layout()
+</pre>
+  <div class="aihydro-output" aria-live="polite"></div>
+</div>
+
+<script>
+whenReady(function(aihydro){
+  aihydro.bindParam({ from:'#alpha', cellId:'bfi-cell', name:'alpha', autorun:true });
+});
+</script>

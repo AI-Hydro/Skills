@@ -1,7 +1,7 @@
 ---
 name: interactive-module-builder
 description: Create production-grade AI-Hydro interactive learning modules — self-contained HTML files with executable Python cells, sliders, quizzes, scrollytelling, real AI-Hydro branding (animated gradient droplet logo, dark theme, cyan accent, Poppins/Nunito/Quicksand fonts), peer-reviewed citations, full provenance footer, and CC-BY-4.0 license. Modules open automatically in AI-Hydro's built-in HTML Preview panel (which supports Python/JS cell execution); do NOT assume an external browser. Use when the user asks to create a learning module, tutorial, interactive lesson, educational artifact, or "explain X with visuals" for any hydrology topic.
-when_to_use: When the user asks to create a learning module, tutorial, interactive lesson, educational content, "explain X with visuals", "make a module about", "create a tutorial for", or "build an interactive lesson on" any hydrology topic.
+when_to_use: When the user asks to create a module, interactive module, learning module, tutorial, interactive lesson, educational content, educational artifact, "explain X with visuals", "make a module about", "create a tutorial for", "build an interactive lesson on", "create something interactive", or build any educational or teaching material about a hydrology topic. Also use when the user wants to produce content that combines explanations with executable Python code or interactive visualizations.
 domain: general
 tools_used:
   - show_html_preview
@@ -102,6 +102,112 @@ ax.legend(); plt.tight_layout(); plt.show()
 
 The kernel auto-injects a stylesheet with `.aihydro-*` classes; your module's CSS should only override branding tokens (`--aihydro-blue`, etc.), not redefine the cell visuals.
 
+### CSS isolation — critical
+
+**DO NOT define CSS for any of these bridge-owned classes in your module `<style>` block:**
+
+`.aihydro-cell` · `.aihydro-cell-header` · `.aihydro-source` · `.aihydro-output` · `.aihydro-run` · `.aihydro-copy` · `.aihydro-toggle-source` · `.aihydro-standalone-pill`
+
+These are injected by the bridge and styled consistently. Overriding them breaks the dark theme and toggle-collapse behavior. Your module `<style>` block should only define: hero, strip, callouts, provenance footer, quiz, and truly module-specific layout.
+
+---
+
+# PYTHON CELL RULES — READ BEFORE WRITING ANY CELL
+
+## Kernel setup — DO NOT override (CRITICAL)
+
+The AI-Hydro HTML Preview kernel pre-configures the Python environment before running any cell. These things are already done for you — adding them yourself causes warnings and conflicts:
+
+| ❌ DO NOT add to cells | ✅ Why it's handled for you |
+|---|---|
+| `import matplotlib; matplotlib.use('Agg')` | Kernel sets Agg backend at startup |
+| `plt.show()` | Kernel auto-captures all open figures after every cell run |
+| `import warnings; warnings.filterwarnings(...)` | Kernel already filters FigureCanvasAgg and switching-backend warnings |
+
+**Correct pattern:**
+```python
+# ✓ Just import and use — kernel handles backend and figure capture
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+mpl.rcParams.update({ ... })
+fig, ax = plt.subplots(figsize=(11, 5))
+ax.plot(...)
+plt.tight_layout()
+# ← no plt.show() needed
+```
+
+**Wrong pattern (DO NOT use):**
+```python
+import matplotlib
+matplotlib.use('Agg')          # ← emits "backend already set" warning
+import matplotlib.pyplot as plt
+...
+plt.show()                     # ← emits FigureCanvasAgg non-interactive warning
+```
+
+## Modules MUST be self-contained — no file I/O
+
+Modules are opened in a kernel with a different working directory than the user's workspace. `os.path.exists("some_file.geojson")` will almost always be False, and loading external files is fragile and breaks offline use.
+
+**Rule:** All data must be embedded as Python constants inside the cell. Never use file I/O in module cells. Never check for local files and fall back.
+
+```python
+# ✓ CORRECT — data embedded as constant
+WATERSHED_COORDS = [[-69.5, 45.0], [-69.2, 45.0], ...]
+
+# ❌ WRONG — fragile file I/O
+with open('watershed.geojson') as f:
+    data = json.load(f)
+# Then: KeyError when file doesn't exist or has unexpected structure
+```
+
+## Matplotlib color constraint (CRITICAL — violating this crashes cells)
+
+NEVER use CSS `rgba()` format strings in any matplotlib call. Matplotlib does not understand CSS syntax.
+
+```python
+# WRONG — crashes with ValueError: Invalid RGBA argument
+ax.set_facecolor('rgba(10,10,21,1)')
+spine.set_color('rgba(125,211,252,0.18)')
+
+# CORRECT — use hex or RGBA tuple (values 0-1, NOT 0-255)
+ax.set_facecolor('#0a0a15')                           # opaque hex
+spine.set_color((125/255, 211/255, 252/255, 0.18))    # RGBA tuple
+plt.setp(ax.spines.values(), color=(125/255, 211/255, 252/255, 0.18))
+```
+
+This affects every matplotlib call that accepts a color: `set_color()`, `set_facecolor()`, `set_edgecolor()`, `tick_params()`, `ax.spines.values()`, `ax.set_xlabel(label, color=...)`, etc. Always use hex or tuple. Never CSS `rgba()`.
+
+## Canonical dark matplotlib boilerplate (include at top of every matplotlib cell)
+
+```python
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+
+mpl.rcParams.update({
+    'figure.facecolor': '#0a0a15',
+    'axes.facecolor':   '#0f0f1e',
+    'axes.edgecolor':   (125/255, 211/255, 252/255, 0.30),
+    'axes.labelcolor':  '#7dd3fc',
+    'xtick.color':      '#94a3b8',
+    'ytick.color':      '#94a3b8',
+    'text.color':       '#e2e8f0',
+    'grid.color':       (125/255, 211/255, 252/255, 0.10),
+    'legend.facecolor': '#1a1a2e',
+    'legend.edgecolor': (125/255, 211/255, 252/255, 0.25),
+})
+```
+
+This ensures correct dark-theme rendering for axes text, labels, ticks, and spines without per-axes overrides.
+
+## Cell length and figure sizing
+
+- Target 25 lines or fewer per cell. The bridge auto-collapses cells with more than 20 lines — a compact cell shows its output without requiring the researcher to expand code first.
+- Split setup from visualization: one "compute" cell (parameters + algorithm) and one "plot" cell (figure only, < 20 lines). The output figure then appears immediately after the short plot cell.
+- `figsize` constraint: max `(11, 5)` for a single panel, `(14, 5)` for two panels. Never exceed `(16, 5)` — the iframe column clips wider figures. Always call `plt.tight_layout()`.
+- Axis labels always need `color=` if not using rcParams boilerplate: `ax.set_xlabel('Day', color='#7dd3fc')`.
+
 ---
 
 # AI-HYDRO BRANDING PACK (use ALL of these)
@@ -182,26 +288,267 @@ No spinning, no rainbow, no neon glare. Respect `prefers-reduced-motion` (mandat
 
 ---
 
-# BUILT-IN CITATION LIBRARY
+# CITATIONS — MANDATORY WORKFLOW (anti-hallucination)
 
-When a module covers a method below, you **must** cite the canonical reference. Do not invent citations.
+> **CRITICAL RULE: NEVER invent or guess a DOI. Every citation must come from a verified API call.**
 
-| Topic | Citation |
+## Citation lookup procedure
+
+For **every** non-trivial method or dataset reference in a module:
+
+1. **Call `lookup_citation(query, source_hint?)`** with the paper title or "Author Year".
+2. If the tool returns a result → use the `formatted_apa` string and `doi` exactly as returned.
+3. If the tool returns `null` or `not_found` → write:
+   > *No peer-reviewed citation found for this method.*
+   Do **NOT** fall back to guessing, paraphrasing from memory, or inserting a plausible-sounding DOI.
+
+```
+# Example agent workflow:
+result = lookup_citation("Beven Kirkby 1979 topographic wetness index")
+# → { doi: "10.1080/02626667909491834", formatted_apa: "Beven, K.J. & Kirkby, M.J. (1979)..." }
+```
+
+## Why this matters
+The old approach (hardcoded ~10-entry lookup table) led to DOI hallucination for anything outside the table. The `lookup_citation` MCP tool queries CrossRef → Semantic Scholar → DataCite in cascade and caches results in `~/.aihydro/citations/`. It is always more accurate and current than any static list.
+
+---
+
+# INTERACTIVE MAPS — data-aihydro-map contract
+
+When a module needs an interactive Leaflet map, use the **3-line standardised contract** below.
+Do **NOT** write `<script src="https://cdn.jsdelivr.net/npm/leaflet...">` or manual `L.map(...)` code.
+The AI-Hydro Bridge adapter initialises the map automatically from `data-*` attributes.
+
+## Author template (copy verbatim, fill in values)
+
+```html
+<div class="aihydro-map"
+     data-aihydro-map-id="unique-id-for-this-map"
+     data-basemap="usgs-topo"
+     data-initial-zoom="10"
+     style="width:100%; height:500px;">
+  <script type="application/geo+json">
+    { "type": "FeatureCollection", "features": [...] }
+  </script>
+</div>
+```
+
+## Supported `data-basemap` values
+| Value | Description |
 |---|---|
-| Baseflow separation (recursive digital filter) | Lyne, V., Hollick, M. (1979). Stochastic time-variable rainfall-runoff modelling. *Hydrology and Water Resources Symposium*, 89–93. |
-| Eckhardt baseflow filter | Eckhardt, K. (2005). How to construct recursive digital filters for baseflow separation. *Hydrol. Proc.* 19, 507–515. |
-| Flood frequency (Bulletin 17C) | Cohn, T.A., England, J.F., Berenbrock, C.E., Mason, R.R., Stedinger, J.R., Lamontagne, J.R. (2013). A generalized Grubbs–Beck test statistic for detecting multiple potentially influential low outliers in flood series. *Water Resour. Res.* 49(8), 5047–5058. |
-| Topographic Wetness Index (TWI) | Beven, K.J., Kirkby, M.J. (1979). A physically based, variable contributing area model of basin hydrology. *Hydrological Sciences Bulletin* 24(1), 43–69. |
-| Hydrological signatures | Westerberg, I.K., McMillan, H.K. (2015). Uncertainty in hydrological signatures. *HESS* 19, 3951–3968. |
-| Budyko framework | Budyko, M.I. (1974). *Climate and Life.* Academic Press. Fu, B. (1981). On the calculation of the evaporation from land surface. *Sci. Atmos. Sin.* 5, 23–31. |
-| NSE | Nash, J.E., Sutcliffe, J.V. (1970). River flow forecasting through conceptual models. *J. Hydrol.* 10(3), 282–290. |
-| KGE | Gupta, H.V., Kling, H., Yilmaz, K.K., Martinez, G.F. (2009). Decomposition of the mean squared error and NSE performance criteria. *J. Hydrol.* 377, 80–91. |
-| HBV model | Bergström, S. (1976). Development and application of a conceptual runoff model for Scandinavian catchments. SMHI Report RHO 7. Seibert, J., Vis, M.J.P. (2012). Teaching hydrological modeling with a user-friendly catchment-runoff-model software package. *HESS* 16, 3315–3325. |
-| CAMELS dataset (US) | Newman, A.J. et al. (2015). Development of a large-sample watershed-scale hydrometeorological data set for the contiguous USA. *HESS* 19, 209–223. Addor, N. et al. (2017). The CAMELS data set. *HESS* 21, 5293–5313. |
-| Watershed delineation (D8) | O'Callaghan, J.F., Mark, D.M. (1984). The extraction of drainage networks from digital elevation data. *Computer Vision, Graphics, and Image Processing* 28(3), 323–344. |
-| Curve Number | NRCS (2004). *National Engineering Handbook, Part 630: Hydrology, Chapter 10: Estimation of Direct Runoff from Storm Rainfall.* USDA. |
+| `usgs-topo` | USGS National Map topo (default) |
+| `usgs-imagery` | USGS satellite imagery |
+| `esri-satellite` | ESRI World Imagery |
+| `carto-dark` | CARTO dark basemap |
+| `osm` | OpenStreetMap |
 
-If your topic is not listed, search the literature and add the most-cited canonical paper. Never fabricate a citation.
+## Optional attributes
+| Attribute | Purpose |
+|---|---|
+| `data-initial-zoom` | Numeric zoom level (default: auto-fit to GeoJSON bounds) |
+| `data-center-lat` / `data-center-lng` | Override map centre |
+| `data-marker-lat` / `data-marker-lng` | Add a styled gauge/point marker |
+| `data-marker-label` | Popup label for the marker |
+| `data-gauge-id` | USGS gauge ID shown in the marker popup |
+| `data-style-color` | Boundary stroke colour (default: `#00DDFF`) |
+| `data-style-fill` | Fill colour (default: `#00A3FF`) |
+| `data-style-fill-opacity` | Fill opacity (default: `0.08`) |
+
+## What the bridge does automatically
+- Loads Leaflet 1.9.4 on demand (no CDN tag needed in the module)
+- Applies AI-Hydro dark palette (consistent across all modules)
+- Parses inline `<script type="application/geo+json">` child and renders GeoJSON overlay
+- Auto-fits bounds unless `data-center-lat/lng` is set
+- Adds layer toggle control, scale bar, and AI-Hydro watermark
+- Emits `map.event` PreviewEvents so the agent can observe map interactions
+
+## Module-specific additions
+If you need a custom overlay (e.g. a canvas-based TWI raster), access the map object after
+the bridge initialises it via `mapEl._aihydroMap`:
+
+```javascript
+var mapEl = document.querySelector('.aihydro-map[data-aihydro-map-id="your-id"]');
+function addCustomOverlay() {
+  if (!mapEl._aihydroMap || !window.L) { setTimeout(addCustomOverlay, 150); return; }
+  // L.imageOverlay(...).addTo(mapEl._aihydroMap);
+}
+setTimeout(addCustomOverlay, 500);
+```
+
+---
+
+# INTERACTIVITY PRIMITIVES — the `window.aihydro` API
+
+Beyond Python cells and maps, the bridge ships a small set of **author-facing JS primitives** on
+the global `window.aihydro` object. They are pure DOM (no kernel dependency), respect
+`prefers-reduced-motion`, and carry the AI-Hydro dark palette automatically. **Use these instead of
+hand-rolling animation, charts, or 3D** — they are the only contracts the bridge guarantees, and the
+validator checks for their correct use.
+
+> **Copy-paste recipes:** verified, pinned snippets for every primitive below live in
+> `assets/recipes/` (one file per primitive + a `README.md`). Start from the recipe rather than
+> writing a primitive call from memory.
+
+## How to call them (timing matters)
+
+`window.aihydro` is injected by the bridge *after* your module's inline `<script>` may have already
+run. Always guard with a readiness poll — never assume `window.aihydro` exists at parse time:
+
+```html
+<script>
+  function whenReady(fn){
+    if (window.aihydro) return fn(window.aihydro);
+    var n = 0, id = setInterval(function(){
+      if (window.aihydro || ++n > 100) { clearInterval(id); if (window.aihydro) fn(window.aihydro); }
+    }, 50);
+  }
+  whenReady(function(aihydro){
+    aihydro.quiz();
+    aihydro.compare('.aihydro-compare');
+    // ...wire the rest of this module's primitives here...
+  });
+</script>
+```
+
+## The primitive → pedagogy decision matrix
+
+Pick the primitive that matches the *cognitive job*, not the one that looks flashiest. One
+interactive per section (Design Principle #5).
+
+| Pedagogical goal | Primitive | Why this one |
+|---|---|---|
+| "Change a parameter, see the equation/figure respond" | **`bindParam`** + Python cell | Real computation; the figure is authoritative, not a cartoon |
+| "Watch a process evolve over time" (recession, wave routing, infiltration front) | **`timeline`** | Play/pause/scrub; can drive a cell frame-by-frame |
+| "Compare two states" (pre/post dam, calibrated vs. observed, DEM vs. TWI) | **`compare`** | Before/after wipe reads instantly; no legend needed |
+| "Feel a continuous dynamic in real time" (rain → runoff response) | **`sim`** | 60 fps canvas; cheap, no kernel round-trip |
+| "Explore multi-series quantitative data" (flow-duration, hydrographs, scatter) | **`plot`** | Branded Plotly; hover/zoom for free |
+| "Understand 3D structure" (terrain, watershed surface, DEM/TWI relief) | **`scene3d`** | Draggable three.js; the only honest way to show relief |
+| "Cinematic, narrated concept animation" (3blue1brown-style) | **Manim video cell** | Pre-rendered MP4; precise typographic math animation |
+| "Reveal an answer / hide a derivation" | **`reveal`** | Progressive disclosure without leaving the page |
+| "Drive a story as the reader scrolls" | **`scrolly`** | Ties narrative beats to viewport position |
+
+**Anti-patterns:** don't use `sim` for anything quantitative the reader must read off an axis (use a
+cell or `plot`); don't use `scene3d` for 2D data (use a figure); don't use a Manim video where a live
+`bindParam` cell would let the reader experiment.
+
+## Contracts (copy verbatim, fill values)
+
+### `bindParam` — slider → live cell parameter
+The cell's `<pre class="aihydro-source">` is a template with `{{name}}` placeholders re-substituted on
+every input change. Values persist across reloads automatically.
+
+```html
+<label>α <input id="alpha" type="range" min="0.9" max="0.99" step="0.005" value="0.925"></label>
+<span data-aihydro-mirror="alpha">0.925</span>
+<!-- cell source contains:  alpha = {{alpha}}  -->
+<script>whenReady(function(a){ a.bindParam({ from:'#alpha', cellId:'bfi-cell', name:'alpha', autorun:true }); });</script>
+```
+
+### `timeline` — play / pause / step / scrub
+```html
+<div id="tl"></div>
+<script>whenReady(function(a){
+  a.timeline({ mount:'#tl', steps:60, fps:12, autoplay:true,
+    onTick:function(i, t){ /* t in [0,1] — redraw a canvas, advance a marker */ },
+    // optional: drive a Python cell frame-by-frame
+    cellId:'wave-cell', param:'frame' });
+});</script>
+```
+
+### `compare` — before/after wipe
+First child = "before", second = "after". Children must be equal-sized (images, canvases, or figures).
+```html
+<div class="aihydro-compare" style="height:320px">
+  <img src="data:image/png;base64,...before...">
+  <img src="data:image/png;base64,...after...">
+</div>
+<script>whenReady(function(a){ a.compare('.aihydro-compare'); });</script>
+```
+
+### `sim` — requestAnimationFrame canvas loop
+```html
+<canvas data-aihydro-sim id="rain" width="640" height="240"></canvas>
+<script>whenReady(function(a){
+  a.sim({ canvas:'#rain', autoplay:true,
+    params:function(){ return { rain:+document.querySelector('#rainSlider').value }; },
+    step:function(ctx, t, p){ /* ctx is a 2D context; draw using p.rain and t (seconds) */ } });
+});</script>
+```
+
+### `plot` — branded Plotly
+Plotly loads lazily from the CSP-whitelisted CDN; the AI-Hydro dark palette is applied unless you
+override `layout`.
+```html
+<div id="fdc" style="height:360px"></div>
+<script>whenReady(function(a){
+  a.plot({ mount:'#fdc',
+    data:[{ x:[/*...*/], y:[/*...*/], type:'scatter', mode:'lines', name:'Flow-duration' }],
+    layout:{ xaxis:{ title:'Exceedance %' }, yaxis:{ title:'Q (m³/s)', type:'log' } } });
+});</script>
+```
+
+### `scene3d` — draggable three.js scene
+`ctx = { THREE, scene, camera, renderer, controls, canvas, dem }`. Returns a promise resolving to `ctx`.
+```html
+<canvas data-aihydro-scene3d id="terrain"></canvas>
+<script>whenReady(function(a){
+  a.scene3d({ canvas:'#terrain', dem:DEM_GRID /* 2D array of heights */,
+    setup:function(ctx){
+      var g = new ctx.THREE.PlaneGeometry(4, 4, ctx.dem.length-1, ctx.dem[0].length-1);
+      /* displace vertices by ctx.dem, add a MeshStandardMaterial, ctx.scene.add(mesh) */
+    } });
+});</script>
+```
+
+**Pinned-version rule (do not change):** the bridge loads `three@0.128.0` — the last release that
+ships the legacy UMD `examples/js/controls/OrbitControls.js`. **Never** hardcode a `three` `<script>`
+tag yourself, and never reference `examples/jsm/` ESM paths or a floating `@latest` version: r134+ is
+ESM-only and the controls 404, which silently leaves the canvas black. Let `scene3d` own three.js.
+
+---
+
+# MANIM VIDEO CELLS (3blue1brown-style animation)
+
+For cinematic, narrated concept animations, author a **video-render cell**: a normal Python cell that
+defines a Manim `Scene`, marked so the kernel renders it to an MP4 and plays it inline.
+
+## Contract
+
+- Add `data-aihydro-render="video"` to the `.aihydro-cell` (or use `data-language="manim"`).
+- The cell body is ordinary Python that defines one or more `class …(Scene)` with a `construct(self)`.
+- Do **not** call `manim` from the command line, write files, or set output paths — the kernel finds
+  every `Scene` subclass in the cell, renders it at low quality to a temp MP4, base64-encodes it, and
+  the bridge plays it in a `<video controls>` element.
+
+```html
+<div class="aihydro-cell" data-aihydro-cell-id="twi-anim" data-language="python" data-aihydro-render="video">
+  <div class="aihydro-cell-header">
+    <span class="aihydro-cell-lang">manim</span>
+    <span class="aihydro-cell-desc">Animated build-up of the TWI definition</span>
+    <button class="aihydro-run" type="button">Run ▶</button>
+  </div>
+  <pre class="aihydro-source">from manim import *
+
+class TwiScene(Scene):
+    def construct(self):
+        eq = MathTex(r"\\mathrm{TWI} = \\ln\\!\\left(\\frac{a}{\\tan\\beta}\\right)")
+        eq.set_color("#00DDFF")
+        self.play(Write(eq))
+        self.wait(1)
+</pre>
+  <div class="aihydro-output" aria-live="polite"></div>
+</div>
+```
+
+## Rules and graceful degradation
+
+- **Manim is an optional kernel dependency.** If `manim`/`ffmpeg` aren't installed, the cell does not
+  crash — the kernel appends a "Manim is not installed in this kernel environment" note to stderr.
+  Treat Manim cells as enrichment, never as the only path to a concept.
+- Keep scenes **short** (a few seconds) and low-complexity — rendering is synchronous on the host.
+- Use the AI-Hydro palette inside scenes (`set_color("#00DDFF")`, background stays default dark).
+- Every video cell **must** define at least one `class …(Scene)`; a video-render cell with no Scene
+  renders nothing (the validator flags this).
 
 ---
 
@@ -540,8 +887,18 @@ plt.show()
 # AFTER YOU SAVE THE MODULE
 
 1. Save the HTML file (use the `write_to_file` tool) to the researcher's workspace, e.g. `<workspace>/modules/<slug>.html`.
-2. Call `show_html_preview(file_path=...)` so the module opens automatically in the AI-Hydro HTML Preview panel (this is the built-in panel with Python cell execution; do not assume an external browser).
-3. In your reply, surface the absolute path to the user and the topics covered.
+2. **Self-review (mandatory):** Read back the saved file and verify the following before proceeding:
+   - The `<script type="application/vnd.aihydro.module+json">` manifest is present and has all required fields
+   - No Python cell contains `matplotlib.use(...)` or `plt.show()`
+   - No Python cell uses file I/O (`open(...)`, `os.path.exists(...)`, `json.load(...)`)  
+   - No matplotlib call uses CSS `rgba()` format strings — only hex or tuple `(r/255, g/255, b/255, alpha)`
+   - Every `.aihydro-cell` has `data-aihydro-cell-id` (unique) + `data-language="python"`
+   - Every cell's Run button is `<button class="aihydro-run" type="button">`
+   - The provenance footer is present with all 5 rows
+   - The References section has at least one peer-reviewed citation
+   - If ANY issue is found: fix it in-place before calling `show_html_preview`.
+3. Call `show_html_preview(file_path=...)` so the module opens automatically in the AI-Hydro HTML Preview panel (this is the built-in panel with Python cell execution; do not assume an external browser).
+4. In your reply, surface the absolute path to the user and the topics covered.
 
 > **NOTE:** If the user has set a researcher profile (via `get_researcher_profile`), add them as `authors[1]` in the manifest and on the hero byline so the module credits them appropriately.
 
@@ -564,8 +921,21 @@ plt.show()
 - [ ] CC-BY-4.0 license pill visible in hero AND in footer
 - [ ] "Made with AI-Hydro" banner with mini-logo SVG
 - [ ] Only branded palette tokens used (no red, no orange, no white backgrounds)
+- [ ] NO CSS `rgba()` strings used in any matplotlib call — hex or `(r/255, g/255, b/255, alpha)` tuples only
+- [ ] Dark matplotlib rcParams boilerplate present at top of every matplotlib cell
+- [ ] `ax.set_xlabel/ylabel` include `color=` argument (or rcParams covers it)
+- [ ] `figsize` does not exceed `(14, 5)` for any cell — `plt.tight_layout()` present
+- [ ] No module CSS overrides bridge-owned classes (`.aihydro-cell`, `.aihydro-source`, `.aihydro-output`, etc.)
 - [ ] Standalone-fallback script disables Run buttons when not in AI-Hydro preview
+- [ ] Any `window.aihydro` primitive (timeline/compare/sim/plot/scene3d/bindParam/quiz) is called inside a `whenReady(...)` guard — never at parse time
+- [ ] No hardcoded `three.js`/Plotly `<script>` tag and no `examples/jsm/` or `@latest` CDN path — let `scene3d`/`plot` own their libraries (pinned `three@0.128.0`)
+- [ ] Every `aihydro-sim`/`scene3d` canvas has a matching `aihydro.sim(...)`/`aihydro.scene3d(...)` call
+- [ ] Every Manim video-render cell (`data-aihydro-render="video"`) defines at least one `class …(Scene)`
+- [ ] NO `matplotlib.use(...)` or `plt.show()` in any cell (kernel handles both)
+- [ ] NO file I/O (`open`, `os.path.exists`, `json.load`) in any cell — all data embedded as constants
 - [ ] File saved to workspace
+- [ ] **Self-review completed**: file re-read and all checklist items verified before `show_html_preview` is called
+- [ ] **Linter clean**: run the **AI-Hydro: Validate Module** command (Command Palette) on the saved file — it deterministically checks the manifest, cell IDs/languages, `<code>`/`onclick`/`plt.show()`/`matplotlib.use()`/file-I/O/CSS-`rgba()` rules, and the provenance/license/references furniture. Resolve every reported error before publishing.
 - [ ] `show_html_preview(path)` called so it opens in the panel
 
 If ANY box is unchecked, the module is not production-grade. Do not present it to the researcher until every box is checked.

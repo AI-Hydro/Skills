@@ -1,0 +1,27 @@
+<!-- RECIPE: compare.
+     Before/after wipe slider over two equal-sized children (here, two canvases).
+     First child = "before", second = "after". Pedagogy: "compare two states." -->
+
+<div class="aihydro-compare" style="height:300px">
+  <canvas id="pre"  width="640" height="300"></canvas>
+  <canvas id="post" width="640" height="300"></canvas>
+</div>
+
+<script>
+whenReady(function(aihydro){
+  // "before" = bare DEM hillshade-ish gradient; "after" = with delineated channel overlaid
+  function bg(id){
+    var ctx = document.getElementById(id).getContext('2d');
+    var g = ctx.createLinearGradient(0, 0, 640, 300);
+    g.addColorStop(0, '#10243a'); g.addColorStop(1, '#0a1622');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, 640, 300);
+    return ctx;
+  }
+  bg('pre');
+  var ctx = bg('post');
+  ctx.strokeStyle = '#00DDFF'; ctx.lineWidth = 3; ctx.beginPath();
+  ctx.moveTo(40, 280); ctx.bezierCurveTo(220, 180, 360, 200, 600, 40); ctx.stroke();
+
+  aihydro.compare('.aihydro-compare');
+});
+</script>

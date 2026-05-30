@@ -1,0 +1,36 @@
+<!-- RECIPE: scene3d.
+     Draggable three.js DEM surface. The bridge owns three.js (pinned three@0.128.0,
+     last UMD OrbitControls release) — do NOT add a three.js <script> tag yourself,
+     and never reference examples/jsm/ or @latest. Pedagogy: "understand 3D structure." -->
+
+<canvas data-aihydro-scene3d id="terrain" style="width:100%;height:360px"></canvas>
+
+<script>
+whenReady(function(aihydro){
+  // synthetic DEM: a ridge-and-valley height grid
+  var N = 64, DEM = [];
+  for (var i = 0; i < N; i++){ DEM[i] = [];
+    for (var j = 0; j < N; j++){
+      DEM[i][j] = Math.sin(i/8) * Math.cos(j/10) * 0.6 + (j/N) * 0.4;
+    }
+  }
+  aihydro.scene3d({
+    canvas:'#terrain', dem:DEM,
+    setup:function(ctx){
+      var T = ctx.THREE;
+      var geo = new T.PlaneGeometry(4, 4, N - 1, N - 1);
+      var pos = geo.attributes.position;
+      for (var k = 0; k < pos.count; k++){
+        var col = k % N, row = Math.floor(k / N);
+        pos.setZ(k, ctx.dem[row][col]);
+      }
+      geo.computeVertexNormals();
+      var mat = new T.MeshStandardMaterial({ color:0x0aa3ff, metalness:0.1, roughness:0.7,
+        wireframe:false, flatShading:false });
+      var mesh = new T.Mesh(geo, mat);
+      mesh.rotation.x = -Math.PI / 2.4;
+      ctx.scene.add(mesh);
+    }
+  });
+});
+</script>

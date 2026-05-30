@@ -1,0 +1,26 @@
+<!-- RECIPE: timeline.
+     Play/pause/step/scrub control that animates a falling-limb recession on a canvas.
+     Pedagogy: "watch a process evolve over time." -->
+
+<canvas id="recession" width="640" height="220" style="width:100%;background:#0f0f1e;border-radius:8px"></canvas>
+<div id="tl"></div>
+
+<script>
+whenReady(function(aihydro){
+  var c = document.getElementById('recession'), ctx = c.getContext('2d');
+  var Q0 = 40, k = 0.04;                       // recession constant
+  function draw(t){                            // t in [0,1] = fraction of 90-day window
+    var days = t * 90;
+    ctx.clearRect(0, 0, c.width, c.height);
+    ctx.strokeStyle = '#00DDFF'; ctx.lineWidth = 2; ctx.beginPath();
+    for (var d = 0; d <= days; d += 0.5){
+      var x = (d/90) * c.width;
+      var y = c.height - (Q0*Math.exp(-k*d)) / Q0 * (c.height - 20) - 10;
+      d === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+  aihydro.timeline({ mount:'#tl', steps:90, fps:15, autoplay:true,
+    onTick:function(i, t){ draw(t); } });
+});
+</script>

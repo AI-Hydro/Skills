@@ -1,0 +1,33 @@
+<!-- RECIPE: sim.
+     requestAnimationFrame canvas loop reading a live slider — rainfall intensity
+     drives an animated runoff response. Pedagogy: "feel a continuous dynamic." -->
+
+<label style="color:#7dd3fc">
+  Rainfall intensity
+  <input id="rainSlider" type="range" min="0" max="100" value="40">
+</label>
+<canvas data-aihydro-sim id="rainCanvas" width="640" height="240"
+        style="width:100%;background:#0f0f1e;border-radius:8px"></canvas>
+
+<script>
+whenReady(function(aihydro){
+  var drops = [];
+  aihydro.sim({
+    canvas:'#rainCanvas', autoplay:true,
+    params:function(){ return { rain:+document.getElementById('rainSlider').value }; },
+    step:function(ctx, t, p){
+      ctx.clearRect(0, 0, 640, 240);
+      // spawn raindrops proportional to intensity
+      for (var i = 0; i < p.rain/20; i++) drops.push({ x:Math.random()*640, y:0 });
+      ctx.fillStyle = '#00A3FF';
+      drops = drops.filter(function(d){
+        d.y += 6; ctx.fillRect(d.x, d.y, 2, 8); return d.y < 200;
+      });
+      // runoff hydrograph height tracks intensity with lag
+      var h = 200 - (p.rain/100) * 160 * (0.5 + 0.5*Math.sin(t));
+      ctx.fillStyle = 'rgba(0,221,255,0.25)';
+      ctx.fillRect(0, h, 640, 240 - h);
+    }
+  });
+});
+</script>

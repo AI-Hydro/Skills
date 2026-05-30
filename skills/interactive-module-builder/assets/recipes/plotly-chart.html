@@ -1,0 +1,27 @@
+<!-- RECIPE: plot.
+     Branded Plotly flow-duration curve. Plotly loads lazily from the CSP-whitelisted
+     CDN; the AI-Hydro dark palette is applied automatically. Pedagogy: "explore
+     multi-series quantitative data with hover/zoom." -->
+
+<div id="fdc" style="height:360px"></div>
+
+<script>
+whenReady(function(aihydro){
+  // synthetic daily flows → flow-duration curve (exceedance %)
+  var rng = 0, flows = [];
+  for (var i = 0; i < 3650; i++){ rng = (rng*1103515245 + 12345) & 0x7fffffff;
+    flows.push(2 + 60*Math.pow(rng/0x7fffffff, 4)); }
+  flows.sort(function(a, b){ return b - a; });
+  var x = flows.map(function(_, i){ return 100 * (i + 1) / flows.length; });
+
+  aihydro.plot({
+    mount:'#fdc',
+    data:[{ x:x, y:flows, type:'scatter', mode:'lines', name:'Flow-duration' }],
+    layout:{
+      title:'Flow-duration curve',
+      xaxis:{ title:'Exceedance probability (%)' },
+      yaxis:{ title:'Discharge (m³/s)', type:'log' }
+    }
+  });
+});
+</script>

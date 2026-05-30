@@ -1,8 +1,8 @@
 {
   "id": "interactive-module-builder",
   "name": "Interactive Module Builder",
-  "description": "Create production-grade AI-Hydro interactive learning modules — HTML files with executable Python cells, real AI-Hydro branding (animated logo, dark theme), peer-reviewed citations, full provenance, CC-BY-4.0 license. Auto-opens in AI-Hydro HTML Preview panel.",
-  "version": "0.2.0",
+  "description": "Create production-grade AI-Hydro interactive learning modules — HTML files with executable Python cells, interactivity primitives (timeline, compare, sim, plot, 3D scene3d), Manim video cells, real AI-Hydro branding (animated logo, dark theme), peer-reviewed citations, full provenance, CC-BY-4.0 license. Auto-opens in AI-Hydro HTML Preview panel.",
+  "version": "0.3.0",
   "author": "AI-Hydro Team",
   "domain": "general",
   "category": "education",
