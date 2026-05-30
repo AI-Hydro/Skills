@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Master Recession Curve — AI-Hydro Module</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="application/vnd.aihydro.module+json">
+{
+  "id": "master-recession-curve",
+  "title": "The Master Recession Curve",
+  "version": "1.0.0",
+  "authors": [
+    { "name": "AI-Hydro Agent", "affiliation": "AI-Hydro Platform", "orcid": null }
+  ],
+  "license": "CC-BY-4.0",
+  "topic": "baseflow",
+  "level": "intro",
+  "estimated_minutes": 15,
+  "requires": { "executable": true, "python": ["numpy", "matplotlib"] },
+  "citation": { "text": "AI-Hydro (2026). The Master Recession Curve. AI-Hydro Modules.", "doi": null },
+  "created_at": "2026-05-30",
+  "ai_hydro_preview_min_version": "0.1.24"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Poppins:wght@500;600;700&family=Nunito:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+:root {
+  --aihydro-blue: #00A3FF; --aihydro-cyan: #00DDFF;
+  --aihydro-bg-deep: #0a0a15; --aihydro-bg-navy: #1a1a2e; --aihydro-bg-mid: #0f0f1e;
+  --aihydro-text: #FFFFFF; --aihydro-text-accent: #7dd3fc; --aihydro-text-muted: #94a3b8; --aihydro-warn: #fbbf24;
+}
+body.aihydro-module {
+  margin: 0; padding: 32px 24px; max-width: 980px; margin-inline: auto;
+  background: linear-gradient(180deg, var(--aihydro-bg-deep) 0%, var(--aihydro-bg-navy) 100%);
+  color: var(--aihydro-text-accent); font-family: 'Nunito', system-ui, sans-serif; line-height: 1.7; min-height: 100vh;
+}
+.aihydro-hero { display: flex; align-items: center; gap: 18px; padding: 18px 0 22px; border-bottom: 1px solid rgba(125,211,252,0.18); margin-bottom: 28px; }
+.aihydro-hero-title { display: flex; flex-direction: column; gap: 4px; }
+.aihydro-hero-title h1 { margin: 0; font-family: 'Quicksand', system-ui, sans-serif; font-weight: 700; font-size: 28px; background: linear-gradient(135deg, #00D4FF 0%, #00FFFF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.aihydro-hero-byline { font-family: 'Quicksand', system-ui, sans-serif; font-size: 12px; color: var(--aihydro-text-muted); display: flex; gap: 10px; flex-wrap: wrap; }
+.aihydro-pill { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 999px; border: 1px solid rgba(125,211,252,0.18); color: var(--aihydro-text-accent); background: rgba(0,221,255,0.06); font-size: 11px; }
+@keyframes aihydro-pulse { 0%,100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(0,163,255,0.40)); } 50% { transform: scale(1.04); filter: drop-shadow(0 0 14px rgba(0,221,255,0.65)); } }
+.aihydro-hero-logo { animation: aihydro-pulse 3s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .aihydro-hero-logo { animation: none; } }
+.aihydro-strip { display: flex; gap: 10px; overflow-x: auto; padding: 14px 0; margin-bottom: 28px; border-bottom: 1px solid rgba(125,211,252,0.10); }
+.aihydro-strip a { flex: 0 0 auto; padding: 8px 14px; border-radius: 999px; background: var(--aihydro-bg-mid); border: 1px solid rgba(125,211,252,0.18); color: var(--aihydro-text-accent); font-family: 'Quicksand', system-ui, sans-serif; font-size: 12px; text-decoration: none; transition: all .15s ease; }
+.aihydro-strip a:hover { border-color: var(--aihydro-cyan); box-shadow: 0 0 0 1px var(--aihydro-cyan); }
+h2 { font-family: 'Poppins', system-ui, sans-serif; color: var(--aihydro-text); margin-top: 36px; }
+h3 { font-family: 'Poppins', system-ui, sans-serif; color: var(--aihydro-text); }
+.callout { border-left: 3px solid var(--aihydro-cyan); background: rgba(125,211,252,0.05); padding: 12px 16px; margin: 18px 0; border-radius: 6px; }
+.callout.tip { border-left-color: #34d399; background: rgba(52,211,153,0.07); }
+.callout.agent { border-left-color: var(--aihydro-blue); background: linear-gradient(90deg, rgba(0,163,255,0.10), rgba(0,221,255,0.04)); }
+.param-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 12px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+.param-row input[type=range] { accent-color: var(--aihydro-cyan); flex: 1 1 220px; }
+.param-val { color: var(--aihydro-cyan); min-width: 56px; }
+canvas.demo { width: 100%; background: var(--aihydro-bg-mid); border-radius: 8px; border: 1px solid rgba(125,211,252,0.12); }
+.aihydro-question { background: var(--aihydro-bg-mid); border: 1px solid rgba(125,211,252,0.18); border-radius: 10px; padding: 16px 18px; margin: 18px 0; }
+.aihydro-choice { display: block; width: 100%; text-align: left; margin: 6px 0; padding: 10px 12px; border-radius: 8px; background: rgba(125,211,252,0.04); border: 1px solid rgba(125,211,252,0.18); color: var(--aihydro-text-accent); font-family: 'Nunito', sans-serif; font-size: 14px; cursor: pointer; }
+.aihydro-choice:hover { border-color: var(--aihydro-cyan); }
+.aihydro-choice[data-aihydro-state="correct"] { border-color: #34d399; background: rgba(52,211,153,0.12); }
+.aihydro-choice[data-aihydro-state="incorrect"] { border-color: var(--aihydro-warn); background: rgba(251,191,36,0.10); }
+.aihydro-feedback { margin-top: 10px; font-size: 13px; color: var(--aihydro-text-accent); min-height: 18px; }
+.aihydro-provenance { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(125,211,252,0.18); font-size: 13px; }
+.aihydro-provenance dl { display: grid; grid-template-columns: 140px 1fr; gap: 6px 18px; }
+.aihydro-provenance dt { font-family: 'Quicksand', system-ui, sans-serif; color: var(--aihydro-text-muted); text-transform: uppercase; font-size: 10px; letter-spacing: 0.06em; }
+.aihydro-provenance dd { margin: 0; color: var(--aihydro-text-accent); }
+.aihydro-refs { margin-top: 28px; font-size: 13px; }
+.aihydro-refs ol { padding-left: 22px; color: var(--aihydro-text-accent); }
+.aihydro-made-with { margin-top: 32px; padding-top: 18px; border-top: 1px solid rgba(125,211,252,0.10); display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 11px; color: var(--aihydro-text-muted); font-family: 'Quicksand', system-ui, sans-serif; }
+.aihydro-made-with a { color: var(--aihydro-text-accent); text-decoration: none; }
+.aihydro-made-with .aihydro-mini-logo { display: inline-flex; align-items: center; gap: 6px; }
+</style>
+</head>
+
+<body class="aihydro-module">
+
+<header class="aihydro-hero">
+  <svg class="aihydro-hero-logo" width="64" height="64" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="aihydroDropletGrad" x1="50" y1="10" x2="50" y2="90" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00A3FF"/><stop offset="100%" stop-color="#00DDFF"/></linearGradient></defs>
+    <path d="M50 10 C50 10 25 35 25 55 C25 70 35 85 50 85 C65 85 75 70 75 55 C75 35 50 10 50 10 Z" fill="url(#aihydroDropletGrad)"/>
+    <ellipse cx="20" cy="52" rx="5" ry="7" fill="url(#aihydroDropletGrad)"/><ellipse cx="80" cy="52" rx="5" ry="7" fill="url(#aihydroDropletGrad)"/>
+    <ellipse cx="40" cy="48" rx="6" ry="9" fill="#1a1a2e"/><ellipse cx="60" cy="48" rx="6" ry="9" fill="#1a1a2e"/>
+    <path d="M 38 62 Q 50 68 62 62" stroke="#1a1a2e" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="50" cy="14" r="4" fill="url(#aihydroDropletGrad)"/>
+  </svg>
+  <div class="aihydro-hero-title">
+    <h1>The Master Recession Curve</h1>
+    <div class="aihydro-hero-byline">
+      <span>by AI-Hydro Agent</span>
+      <span class="aihydro-pill">CC-BY-4.0</span>
+      <span class="aihydro-pill">⏱ 15 min</span>
+      <span class="aihydro-pill">intro · baseflow</span>
+    </div>
+  </div>
+</header>
+
+<nav class="aihydro-strip" aria-label="Module sections">
+  <a href="#sec-1">1 · Why recession matters</a>
+  <a href="#sec-2">2 · A draining store</a>
+  <a href="#sec-3">3 · The recession curve</a>
+  <a href="#sec-4">4 · Fit it yourself</a>
+  <a href="#sec-5">5 · Checkpoint</a>
+  <a href="#sec-6">6 · Summary</a>
+</nav>
+
+<section id="sec-1">
+  <h2>1 · Why recession matters</h2>
+  <p>When the rain stops, a river does not. Streamflow falls along a smooth, repeatable curve called the
+  <strong>recession</strong> — the signature of water draining slowly out of catchment storage. Its shape tells
+  you how much groundwater a basin holds and how long it can sustain flow through a drought.</p>
+  <div class="callout tip"><strong>Key idea:</strong> recession is emptying, not refilling. The slower the
+  recession, the larger and more sluggish the storage feeding the stream.</div>
+</section>
+
+<section id="sec-2">
+  <h2>2 · A draining store</h2>
+  <p>Picture catchment storage as a leaky tank: the more water it holds, the faster it leaks. That single rule —
+  outflow proportional to storage — produces an <em>exponential</em> decline. Drag the recession constant and
+  watch the tank empty.</p>
+  <div class="param-row">
+    <label>recession constant k <input id="kSlider" type="range" min="0.01" max="0.15" step="0.005" value="0.05"></label>
+    <span class="param-val" data-aihydro-mirror="k">0.05</span> <span>day⁻¹</span>
+  </div>
+  <canvas class="demo" data-aihydro-sim id="tankCanvas" width="640" height="240"></canvas>
+  <div class="callout"><strong>Watch:</strong> a small k drains slowly (long memory); a large k empties in days
+  (flashy basin). The water level and the outflow both decay exponentially.</div>
+</section>
+
+<section id="sec-3">
+  <h2>3 · The recession curve unfolds</h2>
+  <p>Plotted against time, the leak traces the recession curve <code>Q(t) = Q₀ · e^(−k·t)</code>. Press play to
+  draw it day by day, or scrub to any point in the dry spell.</p>
+  <canvas class="demo" id="curveCanvas" width="640" height="240"></canvas>
+  <div id="recession-timeline"></div>
+</section>
+
+<section id="sec-4">
+  <h2>4 · Fit it yourself</h2>
+  <p>Adjust k and re-run the cell. The recession is fit to a synthetic dry-down and the
+  <strong>baseflow index (BFI)</strong> is reported — the fraction of total flow delivered as baseflow.</p>
+  <div class="param-row">
+    <label>k for the fit <input id="kFit" type="range" min="0.02" max="0.12" step="0.005" value="0.05"></label>
+    <span class="param-val" data-aihydro-mirror="kfit">0.05</span> <span>day⁻¹</span>
+  </div>
+
+  <div class="aihydro-cell" data-aihydro-cell-id="recession-fit" data-language="python">
+    <div class="aihydro-cell-header">
+      <span class="aihydro-cell-lang">python</span>
+      <span class="aihydro-cell-desc">Exponential recession fit and baseflow index</span>
+      <button class="aihydro-run" type="button">Run ▶</button>
+    </div>
+    <pre class="aihydro-source">import numpy as np
+import matplotlib as mpl, matplotlib.pyplot as plt
+mpl.rcParams.update({'figure.facecolor':'#0a0a15','axes.facecolor':'#0f0f1e','text.color':'#e2e8f0',
+    'axes.labelcolor':'#7dd3fc','xtick.color':'#94a3b8','ytick.color':'#94a3b8',
+    'axes.edgecolor':(125/255,211/255,252/255,0.30),'legend.facecolor':'#1a1a2e'})
+
+rng = np.random.default_rng(7)
+t = np.arange(60)
+k = {{kfit}}                                  # ← substituted live by bindParam
+Q0 = 42.0
+Q = Q0*np.exp(-k*t) + rng.normal(0, 0.6, t.size)   # noisy observed recession
+fit = Q0*np.exp(-k*t)                          # smooth recession model
+bfi = fit.sum()/np.clip(Q, 0.1, None).sum()
+
+fig, ax = plt.subplots(figsize=(11, 4))
+ax.scatter(t, Q, s=14, color='#00A3FF', label='Observed flow')
+ax.plot(t, fit, color='#00DDFF', lw=2, label=f'Recession  k={k:.3f} d⁻¹')
+ax.fill_between(t, 0, fit, color='#00DDFF', alpha=0.10)
+ax.set_xlabel('Days since rain'); ax.set_ylabel('Q (m³/s)')
+ax.set_title(f'Baseflow index ≈ {bfi:.2f}', color='#e2e8f0'); ax.legend()
+plt.tight_layout()
+</pre>
+    <div class="aihydro-output" aria-live="polite"></div>
+  </div>
+  <div class="callout agent"><strong>Try it on your gauge:</strong> ask the AI-Hydro agent to pull a real USGS
+  dry-season hydrograph and fit its recession constant.</div>
+</section>
+
+<section id="sec-5">
+  <h2>5 · Checkpoint</h2>
+  <div class="aihydro-question" id="q-recession" data-aihydro-answer="b">
+    <p><strong>Q:</strong> Two basins have identical peak flows. Basin A's recession constant is k = 0.02 d⁻¹;
+    basin B's is k = 0.10 d⁻¹. Which basin will sustain higher flow three weeks into a drought?</p>
+    <button class="aihydro-choice" type="button" data-aihydro-choice="a"
+      data-aihydro-explain="Larger k means faster emptying — basin B drains quickly and runs low.">Basin B (larger k)</button>
+    <button class="aihydro-choice" type="button" data-aihydro-choice="b"
+      data-aihydro-success="Correct — a smaller k means slower drainage and a longer-lived baseflow.">Basin A (smaller k)</button>
+    <button class="aihydro-choice" type="button" data-aihydro-choice="c"
+      data-aihydro-explain="Peak flow sets the starting point, but the recession constant governs how long flow persists.">They are identical after the peak</button>
+    <div class="aihydro-feedback" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="sec-6">
+  <h2>6 · Summary</h2>
+  <ul>
+    <li>Recession is the exponential decay of streamflow as catchment storage drains: <code>Q(t)=Q₀e^(−kt)</code>.</li>
+    <li>The recession constant <code>k</code> is an inverse memory: small k → long, drought-resistant baseflow.</li>
+    <li>The baseflow index summarises how much of total flow is delivered slowly through storage.</li>
+  </ul>
+</section>
+
+<footer class="aihydro-provenance">
+  <h3 style="margin-top:0; font-family:'Poppins',sans-serif; color:var(--aihydro-text);">Provenance</h3>
+  <dl>
+    <dt>Methods</dt><dd>Linear-reservoir exponential recession; baseflow index from a one-parameter recession model.</dd>
+    <dt>Data</dt><dd>Synthetic dry-down hydrograph generated in-module (seeded NumPy RNG) — no network required.</dd>
+    <dt>Software</dt><dd>AI-Hydro HTML Preview, Python 3.11, NumPy, Matplotlib.</dd>
+    <dt>Generated</dt><dd id="aihydro-gen-date">—</dd>
+    <dt>Reproducibility</dt><dd>Run the cell top-to-bottom in the AI-Hydro HTML Preview panel.</dd>
+  </dl>
+  <section class="aihydro-refs">
+    <h3>References</h3>
+    <ol>
+      <li>Tallaksen, L.M. (1995). A review of baseflow recession analysis. <em>Journal of Hydrology</em>, 165(1–4), 349–370. https://doi.org/10.1016/0022-1694(94)02540-R</li>
+      <li>Lyne, V., &amp; Hollick, M. (1979). Stochastic time-variable rainfall-runoff modelling. <em>Hydrology and Water Resources Symposium</em>, 89–93.</li>
+    </ol>
+  </section>
+  <div class="aihydro-made-with">
+    <span class="aihydro-mini-logo">
+      <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="aihydroMiniGrad" x1="50" y1="10" x2="50" y2="90" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00A3FF"/><stop offset="100%" stop-color="#00DDFF"/></linearGradient></defs><path d="M50 10 C50 10 25 35 25 55 C25 70 35 85 50 85 C65 85 75 70 75 55 C75 35 50 10 50 10 Z" fill="url(#aihydroMiniGrad)"/></svg>
+      Made with <a href="https://github.com/AI-Hydro/AI-Hydro" target="_blank" rel="noopener">AI-Hydro</a>
+    </span>
+    <span><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC-BY-4.0</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){ var el = document.getElementById('aihydro-gen-date'); if (el) el.textContent = new Date().toISOString().split('T')[0]; })();
+
+(function(){
+  var inPreview = (window.AIHYDRO_HTML_PREVIEW_STANDALONE === true) || (typeof window.aihydro !== 'undefined') || (typeof window.acquireVsCodeApi === 'function');
+  if (inPreview) return;
+  document.querySelectorAll('.aihydro-run').forEach(function(btn){ btn.disabled = true; btn.innerHTML = '🔒 Open in AI-Hydro to run'; btn.style.opacity = '0.55'; btn.style.cursor = 'not-allowed'; });
+})();
+
+function whenReady(fn){
+  if (window.aihydro) return fn(window.aihydro);
+  var n = 0, id = setInterval(function(){ if (window.aihydro || ++n > 100) { clearInterval(id); if (window.aihydro) fn(window.aihydro); } }, 50);
+}
+
+whenReady(function(aihydro){
+  aihydro.quiz();
+  aihydro.bindParam({ from:'#kFit', cellId:'recession-fit', name:'kfit', autorun:true });
+
+  // sim: a leaky tank whose level decays at rate k from the slider
+  aihydro.sim({
+    canvas:'#tankCanvas', autoplay:true,
+    params:function(){ return { k:+document.getElementById('kSlider').value }; },
+    step:function(ctx, t, p){
+      var W = 640, H = 240; ctx.clearRect(0,0,W,H);
+      var level = Math.exp(-p.k * (t % 30) * 4);           // 0..1, loops every ~30s
+      var tankX = 60, tankY = 30, tankW = 180, tankH = 180;
+      // water
+      var wh = tankH * level;
+      ctx.fillStyle = 'rgba(0,221,255,0.35)';
+      ctx.fillRect(tankX, tankY + (tankH - wh), tankW, wh);
+      // tank outline
+      ctx.strokeStyle = '#7dd3fc'; ctx.lineWidth = 2; ctx.strokeRect(tankX, tankY, tankW, tankH);
+      // leaking stream
+      var qx = tankX + tankW;
+      ctx.strokeStyle = '#00A3FF'; ctx.lineWidth = 2 + 6*level; ctx.beginPath();
+      ctx.moveTo(qx, tankY + tankH - 8); ctx.quadraticCurveTo(qx + 120, tankY + tankH + 6, W - 40, H - 20); ctx.stroke();
+      // label
+      ctx.fillStyle = '#94a3b8'; ctx.font = '13px monospace';
+      ctx.fillText('storage', tankX + 56, tankY - 8);
+      ctx.fillText('outflow ∝ storage', qx + 40, tankY + tankH - 30);
+    }
+  });
+
+  // timeline: draw the recession curve day by day on curveCanvas
+  var cc = document.getElementById('curveCanvas'), cx = cc.getContext('2d');
+  var Q0 = 42, kCurve = 0.06, days = 60;
+  function drawCurve(frac){
+    var W = 640, H = 240, pad = 30, nd = Math.round(frac * days);
+    cx.clearRect(0,0,W,H);
+    cx.strokeStyle = 'rgba(125,211,252,0.18)'; cx.lineWidth = 1;
+    cx.beginPath(); cx.moveTo(pad, H-pad); cx.lineTo(W-10, H-pad); cx.moveTo(pad, 10); cx.lineTo(pad, H-pad); cx.stroke();
+    cx.strokeStyle = '#00DDFF'; cx.lineWidth = 2.5; cx.beginPath();
+    for (var d = 0; d <= nd; d++){
+      var x = pad + (d/days) * (W - pad - 10);
+      var y = (H - pad) - (Q0*Math.exp(-kCurve*d))/Q0 * (H - pad - 16);
+      d === 0 ? cx.moveTo(x, y) : cx.lineTo(x, y);
+    }
+    cx.stroke();
+    cx.fillStyle = '#94a3b8'; cx.font = '12px monospace';
+    cx.fillText('Q', pad - 18, 18); cx.fillText('days', W - 44, H - 10);
+  }
+  drawCurve(0);
+  aihydro.timeline({ mount:'#recession-timeline', steps:days, fps:14, autoplay:true,
+    onTick:function(i, t){ drawCurve(t); } });
+});
+</script>
+</body>
+</html>

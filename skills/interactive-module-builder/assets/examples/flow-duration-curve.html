@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reading the Flow-Duration Curve — AI-Hydro Module</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="application/vnd.aihydro.module+json">
+{
+  "id": "flow-duration-curve",
+  "title": "Reading the Flow-Duration Curve",
+  "version": "1.0.0",
+  "authors": [
+    { "name": "AI-Hydro Agent", "affiliation": "AI-Hydro Platform", "orcid": null }
+  ],
+  "license": "CC-BY-4.0",
+  "topic": "interpretation",
+  "level": "intro",
+  "estimated_minutes": 15,
+  "requires": { "executable": true, "python": ["numpy", "matplotlib"] },
+  "citation": { "text": "AI-Hydro (2026). Reading the Flow-Duration Curve. AI-Hydro Modules.", "doi": null },
+  "created_at": "2026-05-30",
+  "ai_hydro_preview_min_version": "0.1.24"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Poppins:wght@500;600;700&family=Nunito:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+:root {
+  --aihydro-blue: #00A3FF; --aihydro-cyan: #00DDFF;
+  --aihydro-bg-deep: #0a0a15; --aihydro-bg-navy: #1a1a2e; --aihydro-bg-mid: #0f0f1e;
+  --aihydro-text: #FFFFFF; --aihydro-text-accent: #7dd3fc; --aihydro-text-muted: #94a3b8; --aihydro-warn: #fbbf24;
+}
+body.aihydro-module { margin: 0; padding: 32px 24px; max-width: 980px; margin-inline: auto; background: linear-gradient(180deg, var(--aihydro-bg-deep) 0%, var(--aihydro-bg-navy) 100%); color: var(--aihydro-text-accent); font-family: 'Nunito', system-ui, sans-serif; line-height: 1.7; min-height: 100vh; }
+.aihydro-hero { display: flex; align-items: center; gap: 18px; padding: 18px 0 22px; border-bottom: 1px solid rgba(125,211,252,0.18); margin-bottom: 28px; }
+.aihydro-hero-title { display: flex; flex-direction: column; gap: 4px; }
+.aihydro-hero-title h1 { margin: 0; font-family: 'Quicksand', system-ui, sans-serif; font-weight: 700; font-size: 28px; background: linear-gradient(135deg, #00D4FF 0%, #00FFFF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.aihydro-hero-byline { font-family: 'Quicksand', system-ui, sans-serif; font-size: 12px; color: var(--aihydro-text-muted); display: flex; gap: 10px; flex-wrap: wrap; }
+.aihydro-pill { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 999px; border: 1px solid rgba(125,211,252,0.18); color: var(--aihydro-text-accent); background: rgba(0,221,255,0.06); font-size: 11px; }
+@keyframes aihydro-pulse { 0%,100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(0,163,255,0.40)); } 50% { transform: scale(1.04); filter: drop-shadow(0 0 14px rgba(0,221,255,0.65)); } }
+.aihydro-hero-logo { animation: aihydro-pulse 3s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .aihydro-hero-logo { animation: none; } }
+.aihydro-strip { display: flex; gap: 10px; overflow-x: auto; padding: 14px 0; margin-bottom: 28px; border-bottom: 1px solid rgba(125,211,252,0.10); }
+.aihydro-strip a { flex: 0 0 auto; padding: 8px 14px; border-radius: 999px; background: var(--aihydro-bg-mid); border: 1px solid rgba(125,211,252,0.18); color: var(--aihydro-text-accent); font-family: 'Quicksand', system-ui, sans-serif; font-size: 12px; text-decoration: none; transition: all .15s ease; }
+.aihydro-strip a:hover { border-color: var(--aihydro-cyan); box-shadow: 0 0 0 1px var(--aihydro-cyan); }
+h2 { font-family: 'Poppins', system-ui, sans-serif; color: var(--aihydro-text); margin-top: 36px; }
+h3 { font-family: 'Poppins', system-ui, sans-serif; color: var(--aihydro-text); }
+.callout { border-left: 3px solid var(--aihydro-cyan); background: rgba(125,211,252,0.05); padding: 12px 16px; margin: 18px 0; border-radius: 6px; }
+.callout.tip { border-left-color: #34d399; background: rgba(52,211,153,0.07); }
+.callout.agent { border-left-color: var(--aihydro-blue); background: linear-gradient(90deg, rgba(0,163,255,0.10), rgba(0,221,255,0.04)); }
+.param-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 12px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+.param-row input[type=range] { accent-color: var(--aihydro-cyan); flex: 1 1 220px; }
+.param-val { color: var(--aihydro-cyan); min-width: 56px; }
+.cmp-caption { display: flex; justify-content: space-between; font-size: 12px; color: var(--aihydro-text-muted); font-family: 'JetBrains Mono', monospace; margin-top: 6px; }
+.aihydro-question { background: var(--aihydro-bg-mid); border: 1px solid rgba(125,211,252,0.18); border-radius: 10px; padding: 16px 18px; margin: 18px 0; }
+.aihydro-choice { display: block; width: 100%; text-align: left; margin: 6px 0; padding: 10px 12px; border-radius: 8px; background: rgba(125,211,252,0.04); border: 1px solid rgba(125,211,252,0.18); color: var(--aihydro-text-accent); font-family: 'Nunito', sans-serif; font-size: 14px; cursor: pointer; }
+.aihydro-choice:hover { border-color: var(--aihydro-cyan); }
+.aihydro-choice[data-aihydro-state="correct"] { border-color: #34d399; background: rgba(52,211,153,0.12); }
+.aihydro-choice[data-aihydro-state="incorrect"] { border-color: var(--aihydro-warn); background: rgba(251,191,36,0.10); }
+.aihydro-feedback { margin-top: 10px; font-size: 13px; color: var(--aihydro-text-accent); min-height: 18px; }
+.aihydro-provenance { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(125,211,252,0.18); font-size: 13px; }
+.aihydro-provenance dl { display: grid; grid-template-columns: 140px 1fr; gap: 6px 18px; }
+.aihydro-provenance dt { font-family: 'Quicksand', system-ui, sans-serif; color: var(--aihydro-text-muted); text-transform: uppercase; font-size: 10px; letter-spacing: 0.06em; }
+.aihydro-provenance dd { margin: 0; color: var(--aihydro-text-accent); }
+.aihydro-refs { margin-top: 28px; font-size: 13px; }
+.aihydro-refs ol { padding-left: 22px; color: var(--aihydro-text-accent); }
+.aihydro-made-with { margin-top: 32px; padding-top: 18px; border-top: 1px solid rgba(125,211,252,0.10); display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 11px; color: var(--aihydro-text-muted); font-family: 'Quicksand', system-ui, sans-serif; }
+.aihydro-made-with a { color: var(--aihydro-text-accent); text-decoration: none; }
+.aihydro-made-with .aihydro-mini-logo { display: inline-flex; align-items: center; gap: 6px; }
+</style>
+</head>
+
+<body class="aihydro-module">
+
+<header class="aihydro-hero">
+  <svg class="aihydro-hero-logo" width="64" height="64" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="aihydroDropletGrad" x1="50" y1="10" x2="50" y2="90" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00A3FF"/><stop offset="100%" stop-color="#00DDFF"/></linearGradient></defs>
+    <path d="M50 10 C50 10 25 35 25 55 C25 70 35 85 50 85 C65 85 75 70 75 55 C75 35 50 10 50 10 Z" fill="url(#aihydroDropletGrad)"/>
+    <ellipse cx="20" cy="52" rx="5" ry="7" fill="url(#aihydroDropletGrad)"/><ellipse cx="80" cy="52" rx="5" ry="7" fill="url(#aihydroDropletGrad)"/>
+    <ellipse cx="40" cy="48" rx="6" ry="9" fill="#1a1a2e"/><ellipse cx="60" cy="48" rx="6" ry="9" fill="#1a1a2e"/>
+    <path d="M 38 62 Q 50 68 62 62" stroke="#1a1a2e" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="50" cy="14" r="4" fill="url(#aihydroDropletGrad)"/>
+  </svg>
+  <div class="aihydro-hero-title">
+    <h1>Reading the Flow-Duration Curve</h1>
+    <div class="aihydro-hero-byline">
+      <span>by AI-Hydro Agent</span>
+      <span class="aihydro-pill">CC-BY-4.0</span>
+      <span class="aihydro-pill">⏱ 15 min</span>
+      <span class="aihydro-pill">intro · interpretation</span>
+    </div>
+  </div>
+</header>
+
+<nav class="aihydro-strip" aria-label="Module sections">
+  <a href="#sec-1">1 · What is an FDC?</a>
+  <a href="#sec-2">2 · Explore the curve</a>
+  <a href="#sec-3">3 · Wet vs flashy</a>
+  <a href="#sec-4">4 · Slope &amp; reliability</a>
+  <a href="#sec-5">5 · Checkpoint</a>
+  <a href="#sec-6">6 · Summary</a>
+</nav>
+
+<section id="sec-1">
+  <h2>1 · What is a flow-duration curve?</h2>
+  <p>Rank every daily flow on record from highest to lowest, then ask: what fraction of days exceeded each value?
+  Plot flow against that exceedance probability and you get the <strong>flow-duration curve (FDC)</strong> — a
+  single picture of a river's entire flow regime, from floods on the left to droughts on the right.</p>
+  <div class="callout tip"><strong>Read it like this:</strong> the left tail is high flows you rarely see; the
+  right tail is the low flow you can almost always count on (e.g. Q95, exceeded 95% of the time).</div>
+</section>
+
+<section id="sec-2">
+  <h2>2 · Explore the curve</h2>
+  <p>This FDC is interactive — hover to read off any exceedance percentile, zoom into the low-flow tail. The
+  y-axis is logarithmic because flows span orders of magnitude.</p>
+  <div id="fdc-plot" style="height:380px"></div>
+</section>
+
+<section id="sec-3">
+  <h2>3 · Wet-and-steady vs flashy</h2>
+  <p>The <em>shape</em> is the story. A flat FDC means steady, groundwater-fed flow; a steep FDC means a flashy
+  basin that swings between floods and near-zero. Drag the wipe to compare two catchments with the same mean flow.</p>
+  <div class="aihydro-compare" style="height:300px">
+    <canvas id="fdc-steady" width="640" height="300"></canvas>
+    <canvas id="fdc-flashy" width="640" height="300"></canvas>
+  </div>
+  <div class="cmp-caption"><span>◀ steady / groundwater-fed</span><span>flashy / rain-driven ▶</span></div>
+</section>
+
+<section id="sec-4">
+  <h2>4 · Slope and water-supply reliability</h2>
+  <p>A common index is the slope of the FDC between the 33rd and 66th percentiles — steeper means more variable.
+  Adjust the basin's flashiness and re-run to see the slope and the Q95 low-flow guarantee change.</p>
+  <div class="param-row">
+    <label>flashiness <input id="flashSlider" type="range" min="0.2" max="2.0" step="0.1" value="0.8"></label>
+    <span class="param-val" data-aihydro-mirror="flash">0.8</span>
+  </div>
+
+  <div class="aihydro-cell" data-aihydro-cell-id="fdc-slope" data-language="python">
+    <div class="aihydro-cell-header">
+      <span class="aihydro-cell-lang">python</span>
+      <span class="aihydro-cell-desc">Flow-duration curve, FDC slope index and Q95</span>
+      <button class="aihydro-run" type="button">Run ▶</button>
+    </div>
+    <pre class="aihydro-source">import numpy as np
+import matplotlib as mpl, matplotlib.pyplot as plt
+mpl.rcParams.update({'figure.facecolor':'#0a0a15','axes.facecolor':'#0f0f1e','text.color':'#e2e8f0',
+    'axes.labelcolor':'#7dd3fc','xtick.color':'#94a3b8','ytick.color':'#94a3b8',
+    'axes.edgecolor':(125/255,211/255,252/255,0.30),'grid.color':(125/255,211/255,252/255,0.10)})
+
+rng = np.random.default_rng(11)
+flash = {{flash}}                                  # ← bindParam: spread of the flow distribution
+flows = 8.0*np.exp(flash*rng.standard_normal(3650))   # log-normal daily flows
+fdc = np.sort(flows)[::-1]
+p = 100*np.arange(1, fdc.size+1)/(fdc.size+1)         # exceedance %
+
+def q(pct): return np.interp(pct, p, fdc)
+slope = (np.log(q(33)) - np.log(q(66))) / (0.66 - 0.33)   # FDC slope index
+q95 = q(95)
+
+fig, ax = plt.subplots(figsize=(11, 4))
+ax.semilogy(p, fdc, color='#00DDFF', lw=2)
+ax.axvline(95, color='#34d399', ls='--', lw=1); ax.scatter([95],[q95], color='#34d399', zorder=5)
+ax.set_xlabel('Exceedance probability (%)'); ax.set_ylabel('Q (m³/s, log)')
+ax.set_title(f'FDC slope index = {slope:.2f}    Q95 = {q95:.2f} m³/s', color='#e2e8f0')
+ax.grid(True, which='both', alpha=0.3); plt.tight_layout()
+</pre>
+    <div class="aihydro-output" aria-live="polite"></div>
+  </div>
+  <div class="callout agent"><strong>Try it on your gauge:</strong> ask the AI-Hydro agent to build the FDC for a
+  real USGS station and compute its Q95 reliability flow.</div>
+</section>
+
+<section id="sec-5">
+  <h2>5 · Checkpoint</h2>
+  <div class="aihydro-question" id="q-fdc" data-aihydro-answer="a">
+    <p><strong>Q:</strong> A water utility needs a dependable minimum supply. Which FDC feature should it look at?</p>
+    <button class="aihydro-choice" type="button" data-aihydro-choice="a"
+      data-aihydro-success="Correct — the right tail (e.g. Q95) is the flow available almost all of the time.">The low-flow right tail (Q90–Q95)</button>
+    <button class="aihydro-choice" type="button" data-aihydro-choice="b"
+      data-aihydro-explain="The far-left high flows are rare floods — not a dependable supply.">The far-left high-flow tail</button>
+    <button class="aihydro-choice" type="button" data-aihydro-choice="c"
+      data-aihydro-explain="The mean ignores variability; a flashy river can have a high mean yet fail in droughts.">Only the mean flow</button>
+    <div class="aihydro-feedback" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="sec-6">
+  <h2>6 · Summary</h2>
+  <ul>
+    <li>The FDC plots flow against exceedance probability — the whole flow regime in one curve.</li>
+    <li>A flat curve = steady, groundwater-fed; a steep curve = flashy and rain-driven.</li>
+    <li>The low-flow tail (Q90–Q95) defines dependable supply; the FDC slope index quantifies variability.</li>
+  </ul>
+</section>
+
+<footer class="aihydro-provenance">
+  <h3 style="margin-top:0; font-family:'Poppins',sans-serif; color:var(--aihydro-text);">Provenance</h3>
+  <dl>
+    <dt>Methods</dt><dd>Empirical flow-duration curve (Weibull plotting position); FDC slope index between the 33rd and 66th percentiles; Q95 low-flow statistic.</dd>
+    <dt>Data</dt><dd>Synthetic log-normal daily flow series generated in-module (seeded NumPy RNG) — no network required.</dd>
+    <dt>Software</dt><dd>AI-Hydro HTML Preview, Python 3.11, NumPy, Matplotlib; Plotly for the interactive chart.</dd>
+    <dt>Generated</dt><dd id="aihydro-gen-date">—</dd>
+    <dt>Reproducibility</dt><dd>Run the cell top-to-bottom in the AI-Hydro HTML Preview panel.</dd>
+  </dl>
+  <section class="aihydro-refs">
+    <h3>References</h3>
+    <ol>
+      <li>Vogel, R.M., &amp; Fennessey, N.M. (1994). Flow-duration curves I: New interpretation and confidence intervals. <em>Journal of Water Resources Planning and Management</em>, 120(4), 485–504. https://doi.org/10.1061/(ASCE)0733-9496(1994)120:4(485)</li>
+      <li>Searcy, J.K. (1959). Flow-duration curves. <em>USGS Water-Supply Paper 1542-A</em>. https://doi.org/10.3133/wsp1542A</li>
+    </ol>
+  </section>
+  <div class="aihydro-made-with">
+    <span class="aihydro-mini-logo">
+      <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="aihydroMiniGrad" x1="50" y1="10" x2="50" y2="90" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00A3FF"/><stop offset="100%" stop-color="#00DDFF"/></linearGradient></defs><path d="M50 10 C50 10 25 35 25 55 C25 70 35 85 50 85 C65 85 75 70 75 55 C75 35 50 10 50 10 Z" fill="url(#aihydroMiniGrad)"/></svg>
+      Made with <a href="https://github.com/AI-Hydro/AI-Hydro" target="_blank" rel="noopener">AI-Hydro</a>
+    </span>
+    <span><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC-BY-4.0</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){ var el = document.getElementById('aihydro-gen-date'); if (el) el.textContent = new Date().toISOString().split('T')[0]; })();
+(function(){
+  var inPreview = (window.AIHYDRO_HTML_PREVIEW_STANDALONE === true) || (typeof window.aihydro !== 'undefined') || (typeof window.acquireVsCodeApi === 'function');
+  if (inPreview) return;
+  document.querySelectorAll('.aihydro-run').forEach(function(btn){ btn.disabled = true; btn.innerHTML = '🔒 Open in AI-Hydro to run'; btn.style.opacity = '0.55'; btn.style.cursor = 'not-allowed'; });
+})();
+function whenReady(fn){
+  if (window.aihydro) return fn(window.aihydro);
+  var n = 0, id = setInterval(function(){ if (window.aihydro || ++n > 100) { clearInterval(id); if (window.aihydro) fn(window.aihydro); } }, 50);
+}
+
+// deterministic log-normal sample (Box-Muller with a seeded LCG)
+function sampleFDC(spread, n){
+  var seed = 42, out = [];
+  function rnd(){ seed = (seed*1103515245 + 12345) & 0x7fffffff; return seed/0x7fffffff; }
+  for (var i = 0; i < n; i++){
+    var u1 = Math.max(rnd(), 1e-9), u2 = rnd();
+    var z = Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);
+    out.push(8*Math.exp(spread*z));
+  }
+  out.sort(function(a,b){ return b-a; });
+  return out;
+}
+
+whenReady(function(aihydro){
+  aihydro.quiz();
+  aihydro.bindParam({ from:'#flashSlider', cellId:'fdc-slope', name:'flash', autorun:true });
+
+  // interactive Plotly FDC
+  var fdc = sampleFDC(0.9, 3650);
+  var px = fdc.map(function(_, i){ return 100*(i+1)/(fdc.length+1); });
+  aihydro.plot({ mount:'#fdc-plot',
+    data:[{ x:px, y:fdc, type:'scatter', mode:'lines', name:'FDC',
+            hovertemplate:'exceedance %{x:.0f}%<br>Q = %{y:.2f} m³/s<extra></extra>' }],
+    layout:{ title:'Flow-duration curve (hover to read percentiles)',
+             xaxis:{ title:'Exceedance probability (%)' },
+             yaxis:{ title:'Discharge (m³/s)', type:'log' } } });
+
+  // compare: steady (flat) vs flashy (steep) FDC, same mean
+  function drawFDC(id, spread, color){
+    var c = document.getElementById(id), x = c.getContext('2d');
+    var W = 640, H = 300, pad = 40;
+    var g = x.createLinearGradient(0,0,0,H); g.addColorStop(0,'#0f0f1e'); g.addColorStop(1,'#0a1622');
+    x.fillStyle = g; x.fillRect(0,0,W,H);
+    var data = sampleFDC(spread, 800);
+    var lo = Math.log(0.3), hi = Math.log(Math.max.apply(null, data));
+    x.strokeStyle = 'rgba(125,211,252,0.18)'; x.lineWidth = 1; x.beginPath();
+    x.moveTo(pad,H-pad); x.lineTo(W-12,H-pad); x.moveTo(pad,12); x.lineTo(pad,H-pad); x.stroke();
+    x.strokeStyle = color; x.lineWidth = 2.5; x.beginPath();
+    for (var i = 0; i < data.length; i++){
+      var px2 = pad + (i/data.length)*(W-pad-12);
+      var py = (H-pad) - (Math.log(Math.max(data[i],0.3))-lo)/(hi-lo)*(H-pad-16);
+      i === 0 ? x.moveTo(px2,py) : x.lineTo(px2,py);
+    }
+    x.stroke();
+    x.fillStyle = '#94a3b8'; x.font = '12px monospace';
+    x.fillText('Q (log)', pad-30, 16); x.fillText('exceedance %', W-110, H-12);
+  }
+  drawFDC('fdc-steady', 0.35, '#34d399');   // flat → steady
+  drawFDC('fdc-flashy', 1.5,  '#00DDFF');    // steep → flashy
+  aihydro.compare('.aihydro-compare');
+});
+</script>
+</body>
+</html>
