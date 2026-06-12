@@ -26,8 +26,8 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602298+00:00",
-    "updated_at": "2026-05-30T21:21:48.602298+00:00"
+    "created_at": "2026-06-12T02:28:38.200382+00:00",
+    "updated_at": "2026-06-12T02:28:38.200382+00:00"
   },
   {
     "id": "batch-gauge-analysis",
@@ -55,8 +55,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602368+00:00",
-    "updated_at": "2026-05-30T21:21:48.602368+00:00"
+    "created_at": "2026-06-12T02:28:38.200429+00:00",
+    "updated_at": "2026-06-12T02:28:38.200429+00:00"
   },
   {
     "id": "calibration-diagnostics",
@@ -86,8 +86,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602413+00:00",
-    "updated_at": "2026-05-30T21:21:48.602413+00:00"
+    "created_at": "2026-06-12T02:28:38.200456+00:00",
+    "updated_at": "2026-06-12T02:28:38.200456+00:00"
   },
   {
     "id": "course-authoring",
@@ -120,8 +120,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602458+00:00",
-    "updated_at": "2026-05-30T21:21:48.602458+00:00"
+    "created_at": "2026-06-12T02:28:38.200483+00:00",
+    "updated_at": "2026-06-12T02:28:38.200483+00:00"
   },
   {
     "id": "drought-indices-calculation",
@@ -149,8 +149,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602503+00:00",
-    "updated_at": "2026-05-30T21:21:48.602503+00:00"
+    "created_at": "2026-06-12T02:28:38.200513+00:00",
+    "updated_at": "2026-06-12T02:28:38.200513+00:00"
   },
   {
     "id": "flood-frequency-analysis",
@@ -180,8 +180,8 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602544+00:00",
-    "updated_at": "2026-05-30T21:21:48.602544+00:00"
+    "created_at": "2026-06-12T02:28:38.200539+00:00",
+    "updated_at": "2026-06-12T02:28:38.200539+00:00"
   },
   {
     "id": "hydro-data-explorer",
@@ -211,8 +211,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602591+00:00",
-    "updated_at": "2026-05-30T21:21:48.602591+00:00"
+    "created_at": "2026-06-12T02:28:38.200569+00:00",
+    "updated_at": "2026-06-12T02:28:38.200569+00:00"
   },
   {
     "id": "hydro-mcp-tool-builder",
@@ -243,8 +243,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602644+00:00",
-    "updated_at": "2026-05-30T21:21:48.602644+00:00"
+    "created_at": "2026-06-12T02:28:38.200600+00:00",
+    "updated_at": "2026-06-12T02:28:38.200600+00:00"
   },
   {
     "id": "hydro-skill-creator",
@@ -272,8 +272,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602689+00:00",
-    "updated_at": "2026-05-30T21:21:48.602689+00:00"
+    "created_at": "2026-06-12T02:28:38.200632+00:00",
+    "updated_at": "2026-06-12T02:28:38.200632+00:00"
   },
   {
     "id": "hydro-visualization",
@@ -303,8 +303,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602733+00:00",
-    "updated_at": "2026-05-30T21:21:48.602733+00:00"
+    "created_at": "2026-06-12T02:28:38.200658+00:00",
+    "updated_at": "2026-06-12T02:28:38.200658+00:00"
   },
   {
     "id": "interactive-module-builder",
@@ -334,8 +334,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602778+00:00",
-    "updated_at": "2026-05-30T21:21:48.602778+00:00"
+    "created_at": "2026-06-12T02:28:38.200686+00:00",
+    "updated_at": "2026-06-12T02:28:38.200686+00:00"
   },
   {
     "id": "model-selection",
@@ -362,8 +362,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602819+00:00",
-    "updated_at": "2026-05-30T21:21:48.602819+00:00"
+    "created_at": "2026-06-12T02:28:38.200711+00:00",
+    "updated_at": "2026-06-12T02:28:38.200711+00:00"
   },
   {
     "id": "signature-interpretation",
@@ -394,8 +394,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602854+00:00",
-    "updated_at": "2026-05-30T21:21:48.602854+00:00"
+    "created_at": "2026-06-12T02:28:38.200733+00:00",
+    "updated_at": "2026-06-12T02:28:38.200733+00:00"
   },
   {
     "id": "snow-hydrology-trends",
@@ -424,8 +424,50 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602895+00:00",
-    "updated_at": "2026-05-30T21:21:48.602895+00:00"
+    "created_at": "2026-06-12T02:28:38.200758+00:00",
+    "updated_at": "2026-06-12T02:28:38.200758+00:00"
+  },
+  {
+    "id": "swatplus-builder",
+    "name": "SWAT+ Builder",
+    "description": "Build, run, calibrate, and validate SWAT+ hydrological models from a USGS gauge ID \u2014 with locked-benchmark calibration and evidence-backed, claim-governed results",
+    "version": "0.4.0",
+    "author": "Mohammad Galib",
+    "domain": "swat+",
+    "category": "modelling",
+    "icon": "settings-gear",
+    "tags": [
+      "swat+",
+      "swatplus",
+      "watershed",
+      "calibration",
+      "claim-governance",
+      "locked-benchmark",
+      "evidence-bundle",
+      "MCP"
+    ],
+    "tools_used": [
+      "build_project",
+      "run_basin",
+      "calibrate",
+      "propose_parameters",
+      "compare_runs",
+      "query_artifacts",
+      "diagnose_failure",
+      "validate",
+      "lock_benchmark",
+      "locked_calibrate",
+      "readiness_table"
+    ],
+    "when_to_use": "When the user needs to build or calibrate a SWAT+ watershed model from a USGS gauge ID, run simulations, diagnose failures, or validate results with auditable evidence",
+    "github_url": "https://github.com/AI-Hydro/swatplus-builder/tree/main/SKILL.md",
+    "skill_url": "https://raw.githubusercontent.com/AI-Hydro/swatplus-builder/main/SKILL.md",
+    "is_installed": false,
+    "is_recommended": false,
+    "github_stars": 0,
+    "download_count": 0,
+    "created_at": "2026-06-12T02:28:38.200782+00:00",
+    "updated_at": "2026-06-12T02:28:38.200782+00:00"
   },
   {
     "id": "ungauged-basin-transcription",
@@ -455,8 +497,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.602976+00:00",
-    "updated_at": "2026-05-30T21:21:48.602976+00:00"
+    "created_at": "2026-06-12T02:28:38.200806+00:00",
+    "updated_at": "2026-06-12T02:28:38.200806+00:00"
   },
   {
     "id": "watershed-analysis-workflow",
@@ -491,7 +533,7 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-05-30T21:21:48.603020+00:00",
-    "updated_at": "2026-05-30T21:21:48.603020+00:00"
+    "created_at": "2026-06-12T02:28:38.200828+00:00",
+    "updated_at": "2026-06-12T02:28:38.200828+00:00"
   }
 ]
