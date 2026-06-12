@@ -1,0 +1,15 @@
+{
+  "id": "swatplus-builder",
+  "name": "SWAT+ Builder",
+  "description": "Build, run, calibrate, and validate SWAT+ hydrological models from a USGS gauge ID — with locked-benchmark calibration and evidence-backed, claim-governed results",
+  "version": "0.4.0",
+  "author": "Mohammad Galib",
+  "domain": "swat+",
+  "category": "modelling",
+  "icon": "settings-gear",
+  "tags": ["swat+", "swatplus", "watershed", "calibration", "claim-governance", "locked-benchmark", "evidence-bundle", "MCP"],
+  "tools_used": ["build_project", "run_basin", "calibrate", "propose_parameters", "compare_runs", "query_artifacts", "diagnose_failure", "validate", "lock_benchmark", "locked_calibrate", "readiness_table"],
+  "when_to_use": "When the user needs to build or calibrate a SWAT+ watershed model from a USGS gauge ID, run simulations, diagnose failures, or validate results with auditable evidence",
+  "github_url": "https://github.com/AI-Hydro/swatplus-builder/tree/main/SKILL.md",
+  "skill_url": "https://raw.githubusercontent.com/AI-Hydro/swatplus-builder/main/SKILL.md"
+}
