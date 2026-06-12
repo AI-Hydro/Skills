@@ -26,8 +26,8 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200382+00:00",
-    "updated_at": "2026-06-12T02:28:38.200382+00:00"
+    "created_at": "2026-06-12T03:01:08.148954+00:00",
+    "updated_at": "2026-06-12T03:01:08.148954+00:00"
   },
   {
     "id": "batch-gauge-analysis",
@@ -55,8 +55,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200429+00:00",
-    "updated_at": "2026-06-12T02:28:38.200429+00:00"
+    "created_at": "2026-06-12T03:01:08.149031+00:00",
+    "updated_at": "2026-06-12T03:01:08.149031+00:00"
   },
   {
     "id": "calibration-diagnostics",
@@ -86,8 +86,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200456+00:00",
-    "updated_at": "2026-06-12T02:28:38.200456+00:00"
+    "created_at": "2026-06-12T03:01:08.149075+00:00",
+    "updated_at": "2026-06-12T03:01:08.149075+00:00"
   },
   {
     "id": "course-authoring",
@@ -120,8 +120,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200483+00:00",
-    "updated_at": "2026-06-12T02:28:38.200483+00:00"
+    "created_at": "2026-06-12T03:01:08.149121+00:00",
+    "updated_at": "2026-06-12T03:01:08.149121+00:00"
   },
   {
     "id": "drought-indices-calculation",
@@ -149,8 +149,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200513+00:00",
-    "updated_at": "2026-06-12T02:28:38.200513+00:00"
+    "created_at": "2026-06-12T03:01:08.149168+00:00",
+    "updated_at": "2026-06-12T03:01:08.149168+00:00"
   },
   {
     "id": "flood-frequency-analysis",
@@ -180,8 +180,8 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200539+00:00",
-    "updated_at": "2026-06-12T02:28:38.200539+00:00"
+    "created_at": "2026-06-12T03:01:08.149210+00:00",
+    "updated_at": "2026-06-12T03:01:08.149210+00:00"
   },
   {
     "id": "hydro-data-explorer",
@@ -211,8 +211,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200569+00:00",
-    "updated_at": "2026-06-12T02:28:38.200569+00:00"
+    "created_at": "2026-06-12T03:01:08.149259+00:00",
+    "updated_at": "2026-06-12T03:01:08.149259+00:00"
   },
   {
     "id": "hydro-mcp-tool-builder",
@@ -243,8 +243,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200600+00:00",
-    "updated_at": "2026-06-12T02:28:38.200600+00:00"
+    "created_at": "2026-06-12T03:01:08.149308+00:00",
+    "updated_at": "2026-06-12T03:01:08.149308+00:00"
   },
   {
     "id": "hydro-skill-creator",
@@ -272,8 +272,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200632+00:00",
-    "updated_at": "2026-06-12T02:28:38.200632+00:00"
+    "created_at": "2026-06-12T03:01:08.149356+00:00",
+    "updated_at": "2026-06-12T03:01:08.149356+00:00"
   },
   {
     "id": "hydro-visualization",
@@ -303,8 +303,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200658+00:00",
-    "updated_at": "2026-06-12T02:28:38.200658+00:00"
+    "created_at": "2026-06-12T03:01:08.149398+00:00",
+    "updated_at": "2026-06-12T03:01:08.149398+00:00"
   },
   {
     "id": "interactive-module-builder",
@@ -334,8 +334,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200686+00:00",
-    "updated_at": "2026-06-12T02:28:38.200686+00:00"
+    "created_at": "2026-06-12T03:01:08.149443+00:00",
+    "updated_at": "2026-06-12T03:01:08.149443+00:00"
   },
   {
     "id": "model-selection",
@@ -362,8 +362,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200711+00:00",
-    "updated_at": "2026-06-12T02:28:38.200711+00:00"
+    "created_at": "2026-06-12T03:01:08.149484+00:00",
+    "updated_at": "2026-06-12T03:01:08.149484+00:00"
   },
   {
     "id": "signature-interpretation",
@@ -394,8 +394,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200733+00:00",
-    "updated_at": "2026-06-12T02:28:38.200733+00:00"
+    "created_at": "2026-06-12T03:01:08.149521+00:00",
+    "updated_at": "2026-06-12T03:01:08.149521+00:00"
   },
   {
     "id": "snow-hydrology-trends",
@@ -424,8 +424,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200758+00:00",
-    "updated_at": "2026-06-12T02:28:38.200758+00:00"
+    "created_at": "2026-06-12T03:01:08.149596+00:00",
+    "updated_at": "2026-06-12T03:01:08.149596+00:00"
   },
   {
     "id": "swatplus-builder",
@@ -466,8 +466,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200782+00:00",
-    "updated_at": "2026-06-12T02:28:38.200782+00:00"
+    "created_at": "2026-06-12T03:01:08.149648+00:00",
+    "updated_at": "2026-06-12T03:01:08.149648+00:00"
   },
   {
     "id": "ungauged-basin-transcription",
@@ -497,8 +497,8 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200806+00:00",
-    "updated_at": "2026-06-12T02:28:38.200806+00:00"
+    "created_at": "2026-06-12T03:01:08.149688+00:00",
+    "updated_at": "2026-06-12T03:01:08.149688+00:00"
   },
   {
     "id": "watershed-analysis-workflow",
@@ -533,7 +533,7 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-12T02:28:38.200828+00:00",
-    "updated_at": "2026-06-12T02:28:38.200828+00:00"
+    "created_at": "2026-06-12T03:01:08.149727+00:00",
+    "updated_at": "2026-06-12T03:01:08.149727+00:00"
   }
 ]
