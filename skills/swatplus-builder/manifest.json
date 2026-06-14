@@ -2,7 +2,7 @@
   "id": "swatplus-builder",
   "name": "SWAT+ Builder",
   "description": "Build, run, calibrate, and validate SWAT+ hydrological models from a USGS gauge ID \u2014 with locked-benchmark calibration and evidence-backed, claim-governed results",
-  "version": "0.4.0",
+  "version": "0.7.0",
   "author": "Mohammad Galib",
   "domain": "swat+",
   "category": "modelling",
