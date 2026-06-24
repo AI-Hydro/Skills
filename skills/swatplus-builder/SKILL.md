@@ -1,6 +1,11 @@
 ---
 name: swatplus-builder
 description: "Use this skill when building, running, calibrating, validating, or diagnosing SWAT+ hydrological models. Triggers include SWAT+, watershed modeling, streamflow simulation, hydrograph calibration, USGS discharge matching, routing failures, and outlet selection debugging."
+when_to_use: >
+  SWAT+ | watershed modeling | streamflow simulation | hydrograph calibration |
+  model validation | routing diagnostics | outlet selection | SWAT+ project setup
+tools_used: [run_workflow, workflow_status, swat CLI, swat health]
+tags: [SWAT+, hydrologic-modeling, calibration, validation, watershed]
 ---
 
 # SWAT+ Builder — Agent Skill

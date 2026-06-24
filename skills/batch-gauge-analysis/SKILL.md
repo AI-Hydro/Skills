@@ -10,6 +10,7 @@ when_to_use: >
   regional analysis | large-scale extraction
 domain: composition
 tools_used: [start_session, merge_session_shards]
+tags: [batch-analysis, gauges, delegation, regional-analysis]
 citations: [aihydro2026orchestration]
 ---
 

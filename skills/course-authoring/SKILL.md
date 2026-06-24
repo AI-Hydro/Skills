@@ -13,6 +13,7 @@ when_to_use: >
   module skeleton | course scaffolding | curriculum design
 domain: teaching
 tools_used: [course_scaffold, course_get_curriculum, course_get_state, course_navigate]
+tags: [course-authoring, curriculum, teaching, learning-modules]
 disable-model-invocation: false
 allowed-tools: Read Write Edit Bash
 ---

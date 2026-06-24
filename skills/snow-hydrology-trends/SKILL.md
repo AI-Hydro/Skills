@@ -9,6 +9,7 @@ when_to_use: >
   snowmelt | winter precipitation | alpine hydrology
 domain: interpretation
 tools_used: [fetch_forcing_data, run_python]
+tags: [snow-hydrology, SWE, trends, SNOTEL, snowmelt]
 citations: [mote2018snow]
 ---
 

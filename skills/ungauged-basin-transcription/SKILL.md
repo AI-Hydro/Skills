@@ -8,6 +8,7 @@ when_to_use: >
   prediction in ungauged basins | PUB | proxy site
 domain: composition
 tools_used: [start_session, extract_camels_attributes, fetch_streamflow_data]
+tags: [ungauged-basins, regionalization, donor-basins, streamflow]
 citations: [blöschl2013pub]
 ---
 

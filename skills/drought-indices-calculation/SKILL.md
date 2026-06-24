@@ -8,6 +8,7 @@ when_to_use: >
   meteorological drought | dry spell
 domain: frequency-analysis
 tools_used: [fetch_forcing_data, run_python]
+tags: [drought, SPI, SPEI, forcing-data, hydroclimate]
 citations: [vicente2010spei]
 ---
 
