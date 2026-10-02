@@ -69,6 +69,50 @@ jobs:
           print(f"\nWrote api/skills.json with {len(skills)} skills")
           EOF
 
+      - name: Certify skills and inject into api/skills.json (Phase 3.3)
+        run: |
+          python3 - <<'EOF'
+          import json, glob
+          from datetime import datetime, timezone
+
+          REQUIRED = {"description", "when_to_use", "tools_used", "tags"}
+          today = datetime.now(timezone.utc).date().isoformat()
+
+          def certify(skill):
+              passed, failed = [], []
+              for field in ("description", "when_to_use"):
+                  if isinstance(skill.get(field), str) and skill[field].strip():
+                      passed.append(field)
+                  else:
+                      failed.append(f"{field}: missing or empty")
+              for field in ("tools_used", "tags"):
+                  val = skill.get(field) or []
+                  if isinstance(val, list) and len(val) > 0:
+                      passed.append(field)
+                  else:
+                      failed.append(f"{field}: missing or empty list")
+              ok = len(failed) == 0
+              return {"certified": ok, "certified_at": today if ok else None,
+                      "checks_passed": passed, "checks_failed": failed}
+
+          with open("api/skills.json") as f:
+              skills = json.load(f)
+
+          n_ok = 0
+          for skill in skills:
+              cert = certify(skill)
+              skill["certification"] = cert
+              if cert["certified"]:
+                  n_ok += 1
+                  print(f"  PASS  {skill.get('id', '?')}")
+              else:
+                  print(f"  FAIL  {skill.get('id', '?')}: {cert['checks_failed']}")
+
+          with open("api/skills.json", "w") as f:
+              json.dump(skills, f, indent=2)
+          print(f"\n{n_ok}/{len(skills)} skills certified")
+          EOF
+
       - name: Commit api/skills.json
         run: |
           git config user.name "github-actions[bot]"
