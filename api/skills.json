@@ -26,8 +26,19 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706065+00:00",
-    "updated_at": "2026-06-24T20:15:29.706065+00:00"
+    "created_at": "2026-10-02T07:01:08.516539+00:00",
+    "updated_at": "2026-10-02T07:01:08.516539+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "batch-gauge-analysis",
@@ -55,8 +66,19 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706116+00:00",
-    "updated_at": "2026-06-24T20:15:29.706116+00:00"
+    "created_at": "2026-10-02T07:01:08.516599+00:00",
+    "updated_at": "2026-10-02T07:01:08.516599+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "calibration-diagnostics",
@@ -86,8 +108,19 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706144+00:00",
-    "updated_at": "2026-06-24T20:15:29.706144+00:00"
+    "created_at": "2026-10-02T07:01:08.516629+00:00",
+    "updated_at": "2026-10-02T07:01:08.516629+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "course-authoring",
@@ -120,8 +153,19 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706170+00:00",
-    "updated_at": "2026-06-24T20:15:29.706170+00:00"
+    "created_at": "2026-10-02T07:01:08.516655+00:00",
+    "updated_at": "2026-10-02T07:01:08.516655+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "drought-indices-calculation",
@@ -149,8 +193,19 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706201+00:00",
-    "updated_at": "2026-06-24T20:15:29.706201+00:00"
+    "created_at": "2026-10-02T07:01:08.516687+00:00",
+    "updated_at": "2026-10-02T07:01:08.516687+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "flood-frequency-analysis",
@@ -180,8 +235,19 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706231+00:00",
-    "updated_at": "2026-06-24T20:15:29.706231+00:00"
+    "created_at": "2026-10-02T07:01:08.516718+00:00",
+    "updated_at": "2026-10-02T07:01:08.516718+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "hydro-data-explorer",
@@ -211,8 +277,19 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706260+00:00",
-    "updated_at": "2026-06-24T20:15:29.706260+00:00"
+    "created_at": "2026-10-02T07:01:08.516751+00:00",
+    "updated_at": "2026-10-02T07:01:08.516751+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "hydro-mcp-tool-builder",
@@ -243,8 +320,19 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706292+00:00",
-    "updated_at": "2026-06-24T20:15:29.706292+00:00"
+    "created_at": "2026-10-02T07:01:08.516789+00:00",
+    "updated_at": "2026-10-02T07:01:08.516789+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "hydro-skill-creator",
@@ -272,8 +360,19 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706324+00:00",
-    "updated_at": "2026-06-24T20:15:29.706324+00:00"
+    "created_at": "2026-10-02T07:01:08.516821+00:00",
+    "updated_at": "2026-10-02T07:01:08.516821+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "hydro-visualization",
@@ -303,8 +402,19 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706349+00:00",
-    "updated_at": "2026-06-24T20:15:29.706349+00:00"
+    "created_at": "2026-10-02T07:01:08.516847+00:00",
+    "updated_at": "2026-10-02T07:01:08.516847+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "interactive-module-builder",
@@ -334,8 +444,19 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706378+00:00",
-    "updated_at": "2026-06-24T20:15:29.706378+00:00"
+    "created_at": "2026-10-02T07:01:08.516878+00:00",
+    "updated_at": "2026-10-02T07:01:08.516878+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "model-selection",
@@ -362,8 +483,20 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706401+00:00",
-    "updated_at": "2026-06-24T20:15:29.706401+00:00"
+    "created_at": "2026-10-02T07:01:08.516902+00:00",
+    "updated_at": "2026-10-02T07:01:08.516902+00:00",
+    "certification": {
+      "certified": false,
+      "certified_at": null,
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tags"
+      ],
+      "checks_failed": [
+        "tools_used: missing or empty list"
+      ]
+    }
   },
   {
     "id": "signature-interpretation",
@@ -394,8 +527,19 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706425+00:00",
-    "updated_at": "2026-06-24T20:15:29.706425+00:00"
+    "created_at": "2026-10-02T07:01:08.516925+00:00",
+    "updated_at": "2026-10-02T07:01:08.516925+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "snow-hydrology-trends",
@@ -424,8 +568,19 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706448+00:00",
-    "updated_at": "2026-06-24T20:15:29.706448+00:00"
+    "created_at": "2026-10-02T07:01:08.516951+00:00",
+    "updated_at": "2026-10-02T07:01:08.516951+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "swatplus-builder",
@@ -468,8 +623,19 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706474+00:00",
-    "updated_at": "2026-06-24T20:15:29.706474+00:00"
+    "created_at": "2026-10-02T07:01:08.516977+00:00",
+    "updated_at": "2026-10-02T07:01:08.516977+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "ungauged-basin-transcription",
@@ -499,8 +665,19 @@
     "is_recommended": false,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706495+00:00",
-    "updated_at": "2026-06-24T20:15:29.706495+00:00"
+    "created_at": "2026-10-02T07:01:08.517001+00:00",
+    "updated_at": "2026-10-02T07:01:08.517001+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   },
   {
     "id": "watershed-analysis-workflow",
@@ -535,7 +712,18 @@
     "is_recommended": true,
     "github_stars": 0,
     "download_count": 0,
-    "created_at": "2026-06-24T20:15:29.706523+00:00",
-    "updated_at": "2026-06-24T20:15:29.706523+00:00"
+    "created_at": "2026-10-02T07:01:08.517025+00:00",
+    "updated_at": "2026-10-02T07:01:08.517025+00:00",
+    "certification": {
+      "certified": true,
+      "certified_at": "2026-10-02",
+      "checks_passed": [
+        "description",
+        "when_to_use",
+        "tools_used",
+        "tags"
+      ],
+      "checks_failed": []
+    }
   }
 ]
